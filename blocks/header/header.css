@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 880px;
+    min-height: 74px;
+    /* margin: 0 auto; */
+    border: 1px solid red;
+      
+}
