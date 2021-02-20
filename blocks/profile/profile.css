@@ -3,4 +3,5 @@
     min-height: 120px;
     border: 1px solid gray;
     margin: 0 auto;
+    display: flex;
 }
