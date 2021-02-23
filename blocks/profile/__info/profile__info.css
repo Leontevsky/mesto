@@ -6,6 +6,5 @@ grid-template-rows: repeat(2, 1fr); */
 grid-template-areas:
 "title button"
 "subtitle subtitle"; 
-
-gap: 10px 20px;
+gap: 16px 18px;
 }

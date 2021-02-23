@@ -1,5 +1,9 @@
 .profile__subtitle {
     font-family: "Inter", "Arial",sans-serif;
-    color: white;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
     margin: 0;
 }
