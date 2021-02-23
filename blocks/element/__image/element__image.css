@@ -1,6 +1,6 @@
 .element__image {
     width: 100%;
-    min-height: 100%;
+    min-height: 282px;
     background-image: url(../../../images/zamok.jpg);
-    background-size: contain;
+    background-size: cover;
 }
