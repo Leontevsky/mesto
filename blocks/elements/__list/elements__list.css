@@ -9,3 +9,10 @@
     max-width: 882px;
     justify-content: center;
 }
+
+@media screen and (max-width: 520px) {
+    .elements__list {
+        flex-direction: column;
+        text-align: center;
+    }
+}

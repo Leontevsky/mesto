@@ -9,5 +9,17 @@
     /* margin: 0 auto; */
     border-bottom: 1px solid #a5a5a5;
     /* border: 1px solid yellow; */
-      
+}
+
+@media screen and (max-width: 980px) {
+    .header {
+        width: calc(100% - 50px);
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .header {
+        margin-top: 0;
+        width: 100%;
+    }
 }

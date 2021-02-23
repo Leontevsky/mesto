@@ -8,3 +8,16 @@
     padding-top: 36.25px;
     padding-bottom: 47.25px;
 }
+
+@media screen and (max-width: 980px) {
+    .profile {
+        width: calc(100% - 50px);
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .profile {
+        flex-direction: column;
+        text-align: center;
+    }
+}
