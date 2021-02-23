@@ -1,0 +1,6 @@
+.element {
+min-height: 282px;
+border: 1px solid red;
+/* border-radius: 10px;
+overflow: hidden; */
+}
