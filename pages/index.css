@@ -22,7 +22,7 @@
 @import url(../blocks/element/__button/element__button.css);
 @import url(../blocks/element/__button/_theme/element__button_theme-dark.css);
 @import url(../blocks/footer/footer.css);
-@import url(../blocks/footer/__author/footer_author.css);
+@import url(../blocks/footer/__author/footer__author.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__content/popup__content.css);
 @import url(../blocks/popup/_open/popup_open.css);

@@ -1,4 +1,4 @@
-.footer_author {
+.footer__author {
     font-family: "Inter", "Arial",sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 480px) {
-    .footer_author {
+    .footer__author {
         font-size: 14px;
         line-height: 17px;
         /* margin: 48px 19px 36px; */
