@@ -5,7 +5,7 @@ grid-template-columns: minmax(auto,294px);
 grid-template-rows: repeat(2, 1fr); */
 grid-template-areas:
 "title button"
-"subtitle subtitle"; 
+"subtitle subtitle";
 gap: 16px 18px;
 }
 
