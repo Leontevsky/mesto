@@ -16,3 +16,11 @@
     line-height: 22px;
 
 }
+
+@media screen and (max-width: 600px) {
+    .popup__button {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+
