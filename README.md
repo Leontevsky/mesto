@@ -7,3 +7,7 @@
 HTML & CSS
 JavaScript
 DOM
+
+## Посмотреть проект
+
+https://leontevsky.github.io/mesto/
