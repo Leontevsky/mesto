@@ -1,29 +1,4 @@
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ]; 
+
 
 let popup = document.querySelector('.popup');
 let showPopupButton = document.querySelector('#show-popup');
@@ -70,6 +45,68 @@ formElement.addEventListener('submit', formSubmitHandler);
 // closePopupButton.addEventListener('click', togglePopup);
 
 // 6 карточек из коробки
+// Карточки
+// Создайте функцию, которая делает следующее:
+// принимает в качестве аргумента данные карточки (объект с названием и ссылкой на картинку)
+// клонирует внутри себя нужный template (обязательно посмотрите вебинар про template'ы)
+// устанавливает картинку и название в разметку template'a
+// устанавливает обработчики событий: на лайк (1), на удаление (2) и на открытие картинки (3). Обратите внимание, что функции которые вызываются обработчиками событий вам надо вынести в отдельные переменные и за пределы той функции, которая создает карточку
+// возвращает готовую разметку (в которой уже есть все данные и обработчики). Смотрите в сторону return
+// Создайте другую функцию, которая:
+// принимает данные карточки и ссылку на контейнер, куда надо положить результат
+// внутри себя создает разметку карточки, используя функцию о которой написано выше
+// кладет полученный результат в разметку
+
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
+
+ 
 
 
+
+// initialCards.forEach(function(xaz){ // Если с результатом ничего делать не надо, используем ForEach
+//     console.log(xaz.name)
+// })
+
+
+// Пример
+// const firstArr = [0, 1, 2, 3, 4];
+
+// const secondArr = firstArr.map(function (item) { // Берём каждый элемент массива
+//   return item * item; // Возводим каждый элемент в квадрат
+// }); 
+
+// console.log(secondArr); // [0, 1, 4, 9, 16] 
+
+
+
+function renderList() {
+    const result = initialCards.map(function(item){
+        return item;
+    });
+}
 
