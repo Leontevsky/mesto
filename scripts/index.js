@@ -23,7 +23,7 @@ document.querySelector('#job').value = document.querySelector('.profile__subtitl
  //Открытие попапа popup_new
  let popupNew = document.querySelector('.popup_new');
  let showProfileButton = document.querySelector('#show-popup-new');
- let closeProfileButton = document.querySelector('.popup__close');
+ let closeProfileButton = popupNew.querySelector('.popup__close');
 
  function showPopupNew () {
     popupNew.classList.add('popup_open');
