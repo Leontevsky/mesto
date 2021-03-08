@@ -1,5 +1,3 @@
-
-
 let popup = document.querySelector('.popup');
 let showPopupButton = document.querySelector('#show-popup');
 let closePopupButton = document.querySelector('.popup__close');
@@ -7,6 +5,7 @@ let nameInput = document.querySelector('#name');
 let jobInput = document.querySelector('#job');
 let formElement = document.querySelector('.popup__form');
 
+//Открытие попапа popup_edit
  function showPopup() {
     popup.classList.add('popup_open');
  }
@@ -15,21 +14,39 @@ document.querySelector('#name').value = document.querySelector('.profile__title'
 document.querySelector('#job').value = document.querySelector('.profile__subtitle').textContent;
  
  function closePopup() {
-     popup.classList.remove('popup_open');
+    popup.classList.remove('popup_open');
  }
 
  showPopupButton.addEventListener('click', showPopup);
  closePopupButton.addEventListener('click', closePopup);
 
-function formSubmitHandler (evt) {
+ //Открытие попапа popup_new
+ let popupNew = document.querySelector('.popup_new');
+ let showProfileButton = document.querySelector('#show-popup-new');
+ let closeProfileButton = document.querySelector('.popup__close');
+
+ function showPopupNew () {
+    popupNew.classList.add('popup_open');
+ }
+
+ function closePopupNew () {
+    popupNew.classList.remove('popup_open');
+ }
+
+ showProfileButton.addEventListener('click', showPopupNew);
+ closeProfileButton.addEventListener('click', closePopupNew);
+
+ function formSubmitHandler (evt) {
     evt.preventDefault(); 
     document.querySelector('.profile__title').textContent = nameInput.value; 
     document.querySelector('.profile__subtitle').textContent = jobInput.value;
 
     closePopup();
 }
-
+ 
 formElement.addEventListener('submit', formSubmitHandler); 
+
+ 
 
 // 2 вариант открыть или закрыть Popup через toggle
 
@@ -84,10 +101,6 @@ const initialCards = [
     }
   ];
 
- 
-
-
-
 // initialCards.forEach(function(xaz){ // Если с результатом ничего делать не надо, используем ForEach
 //     console.log(xaz.name)
 // })
@@ -102,11 +115,26 @@ const initialCards = [
 
 // console.log(secondArr); // [0, 1, 4, 9, 16] 
 
+// Интерполяция. Пример ${}. Внутри шаблонной строки выполнить JS. 
 
+const container = document.querySelector('.elements__list'); 
 
 function renderList() {
     const result = initialCards.map(function(item){
-        return item;
-    });
+        return `
+            <li class="element">
+                <img src="${item.link}" alt="Фото" class="element__image">
+                <div class="element__caption">
+                    <h2 class="element__title">${item.name}</h2> 
+                    <button type="button" class="element__button element__button_theme-dark"></button>
+                    <button type="button" class="element__button_delete "></button>
+                </div>
+            </li> 
+    `;
+    }).join('');
+
+    container.insertAdjacentHTML('afterbegin', result); // Эта штука превращает строку в разметку
 }
+
+renderList()
 

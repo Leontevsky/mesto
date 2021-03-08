@@ -22,7 +22,7 @@
                     <button type="button" class="profile__select-button" id="show-popup"></button>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <button type="button" class="profile__button"></button>
+                <button type="button" class="profile__button" id="show-popup-new"></button>
             </section>
 
             <section class="elements">
@@ -84,7 +84,19 @@
             <p class="footer__author">© 2020 Mesto Russia</p>
         </footer>
 
-        <div class="popup">
+        <div class="popup popup_edit">
+            <div class="popup__content">
+                <button type="button" class="popup__close"></button>
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <form action="URL" class="popup__form" name="form">
+                    <input type="text" name="name" placeholder="Жак-Ив Кусто" class="popup__input popup__input_type_name" id="name">
+                    <input type="text" name="about" placeholder="Исследователь океана" class="popup__input popup__input_type_name" id="job">
+                    <button type="submit" class="popup__button">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup popup_new">
             <div class="popup__content">
                 <button type="button" class="popup__close"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
