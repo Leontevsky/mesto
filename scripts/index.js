@@ -50,17 +50,6 @@ document.querySelector('#job').value = document.querySelector('.profile__subtitl
  
   formElement.addEventListener('submit', formSubmitHandler); 
 
-
-
-
-
-
-
-
-
-
-
-
 // ______________________________________________
 // function showEditPopup() { // функция берет константу editFormPopup и добавляет туда класс popup_open
 //     editFormPopup.classList.add('popup_open');
@@ -100,12 +89,6 @@ document.querySelector('#job').value = document.querySelector('.profile__subtitl
  
 //  formElement.addEventListener('submit', formSubmitHandler); 
 // _______________________________________________________
-
-
-
-
-
-
 
 
 // //Открытие попапа popup_edit
@@ -193,57 +176,41 @@ const initialCards = [
     }
   ];
 
-// initialCards.forEach(function(xaz){ // Если с результатом ничего делать не надо, используем ForEach
-//     console.log(xaz.name)
-// })
-
-
-// Пример
-// const firstArr = [0, 1, 2, 3, 4];
-
-// const secondArr = firstArr.map(function (item) { // Берём каждый элемент массива
-//   return item * item; // Возводим каждый элемент в квадрат
-// }); 
-
-// console.log(secondArr); // [0, 1, 4, 9, 16] 
-
-// Интерполяция. Пример ${}. Внутри шаблонной строки выполнить JS. 
 
 const container = document.querySelector('.elements__list');
+const toDoform = document.querySelector('.popup__form_add');
+const templateElement = document.querySelector('#template');
 
-function createHTMLstring(item){
-    return `
-        <li class="element">
-            <img src="${item.link}" alt="Фото" class="element__image">
-            <div class="element__caption">
-                <h2 class="element__title">${item.name}</h2> 
-                <button type="button" class="element__button" id= "like"></button>
-                <button type="button" class="element__button_delete "></button>
-            </div>
-        </li> 
-`;
+function createCardNew(item){
+	const newItem = templateElement.content.cloneNode(true);
+	const title = newItem.querySelector('.element__title');
+    const Cardlink = newItem.querySelector('.element__image');
+	title.textContent = item.title;
+    Cardlink.textContent = item.link;
+
+	return newItem;
 }
 
 function renderList() {
-    const result = initialCards.map(createHTMLstring).join('');
+    const result = initialCards.map(createCardNew)
 
-    container.insertAdjacentHTML('afterbegin', result); // Эта штука превращает строку в разметку
+    container.append(...result);
 }
 
-renderList()
 // Добавление карточки //
-const toDoform = document.querySelector('.popup__form_add');
 
 function addTaskFormListener(evt) {
     evt.preventDefault(); // Отменяем переход по ссылке
     const input = toDoform.querySelector('#PlaceName'); // нашли input внутри формы
     const inputTitle = input.value; // вытащили значение
-    const newTask = createHTMLstring({inputTitle});
-    container.insertAdjacentHTML('afterbegin', newTask);
+    
+    const newTask = createCardNew({inputTitle});
+    container.prepend(newTask);
 
-    input.value = ' ';
+    input.value = '';
 }
 
+renderList()
 toDoform.addEventListener('submit', addTaskFormListener);
 
 
@@ -265,15 +232,15 @@ toDoform.addEventListener('submit', addTaskFormListener);
 
 //Черный лайк актив
 
- let likeButtonActive = document.querySelector('#like'); 
- const elementCaption = document.querySelector('.element__button');
-
- function ButtonLikeActive () {
-     elementCaption.classList.add('element__button_theme-dark');
- }
+//  let likeButtonActive = document.querySelector('#like'); 
+//  const elementCaption = document.querySelector('.element__button');
 
 //  function ButtonLikeActive () {
-//      elementCaption.classList.remove('element__button_theme-dark');
+//      elementCaption.classList.add('element__button_theme-dark');
 //  }
 
- likeButtonActive.addEventListener('click', ButtonLikeActive);
+// //  function ButtonLikeActive () {
+// //      elementCaption.classList.remove('element__button_theme-dark');
+// //  }
+
+//  likeButtonActive.addEventListener('click', ButtonLikeActive);
