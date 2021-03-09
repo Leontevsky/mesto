@@ -1,50 +1,142 @@
 let popup = document.querySelector('.popup');
-let showPopupButton = document.querySelector('#show-popup');
-let closePopupButton = document.querySelector('.popup__close');
+let showEditFormButton = document.querySelector('#show-popup'); // кнопка которая открывает мне попап редактирования карточки
+let closeEditFormButton = document.querySelector('.popup__close'); // кнопка которая закрывает мне попап редактирования карточки
 let nameInput = document.querySelector('#name');
 let jobInput = document.querySelector('#job');
 let formElement = document.querySelector('.popup__form');
 
-//Открытие попапа popup_edit
- function showPopup() {
-    popup.classList.add('popup_open');
- }
+let popupNew = document.querySelector('.popup_new');
+let showCreateFormButton = document.querySelector('#show-popup-new'); // Кнопка открытия попапа для создания новой карточки
+let closeCreateFormButton = popupNew.querySelector('.popup__close'); // Кнопка закрытия попапа для создания новой карточки
 
-document.querySelector('#name').value = document.querySelector('.profile__title').textContent;
-document.querySelector('#job').value = document.querySelector('.profile__subtitle').textContent;
- 
- function closePopup() {
-    popup.classList.remove('popup_open');
- }
+const editFormPopup = document.querySelector('.popup_edit'); // Нахожу в разметке попап редактирования карточки
+const сreateFormPopup = document.querySelector('.popup_new'); // Нахожу в разметке попап создания новой карточки
 
- showPopupButton.addEventListener('click', showPopup);
- closePopupButton.addEventListener('click', closePopup);
-
- //Открытие попапа popup_new
- let popupNew = document.querySelector('.popup_new');
- let showProfileButton = document.querySelector('#show-popup-new');
- let closeProfileButton = popupNew.querySelector('.popup__close');
-
- function showPopupNew () {
-    popupNew.classList.add('popup_open');
- }
-
- function closePopupNew () {
-    popupNew.classList.remove('popup_open');
- }
-
- showProfileButton.addEventListener('click', showPopupNew);
- closeProfileButton.addEventListener('click', closePopupNew);
-
- function formSubmitHandler (evt) {
-    evt.preventDefault(); 
-    document.querySelector('.profile__title').textContent = nameInput.value; 
-    document.querySelector('.profile__subtitle').textContent = jobInput.value;
-
-    closePopup();
+function openPopup (popup) {
+    popup.classList.add('popup_open')
 }
+
+function closePopup (popup) {
+    popup.classList.remove('popup_open')
+}
+
+showEditFormButton.addEventListener('click', function () {
+    openPopup(editFormPopup)
+  })
+
+closeEditFormButton.addEventListener('click', function () {
+    closePopup(editFormPopup)
+})
+
+showCreateFormButton.addEventListener('click', function () {
+    openPopup(CreateFormPopup)
+})
+
+closeCreateFormButton.addEventListener('click', function () {
+    closePopup(CreateFormPopup)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ______________________________________________
+// function showEditPopup() { // функция берет константу editFormPopup и добавляет туда класс popup_open
+//     editFormPopup.classList.add('popup_open');
+// }
+
+// showPopupButton.addEventListener('click', showEditPopup); // Слушатель на кнопку с функцией открытия
+
+
+
+// function closeEditPopup() { // функция берет константу editFormPopup и удаляет класс popup_open
+//     editFormPopup.classList.remove('popup_open');
+// }
+
+// closePopupButton.addEventListener('click', closeEditPopup); // Слушатель на кнопку с функцией закрытия
+
+// // Открытие popup_new
+// let popupNew = document.querySelector('.popup_new');
+// let openCardFormButton = document.querySelector('#show-popup-new'); // Кнопка открытия попапа для создания новой карточки
+// let closeCardFormButton = popupNew.querySelector('.popup__close'); // Кнопка закрытия попапа для создания новой карточки
+
+
+// function showCardFormPopup() {
+//     showEditPopup(cardFormPopup);
+// }
+
+// openCardFormButton.addEventListener('click', showCardFormPopup);
+
+// document.querySelector('#name').value = document.querySelector('.profile__title').textContent;
+// document.querySelector('#job').value = document.querySelector('.profile__subtitle').textContent;
+
+// function formSubmitHandler (evt) {
+//     evt.preventDefault(); 
+//     document.querySelector('.profile__title').textContent = nameInput.value; 
+//     document.querySelector('.profile__subtitle').textContent = jobInput.value;
+
+//     closeEditPopup();
+//  }
  
-formElement.addEventListener('submit', formSubmitHandler); 
+//  formElement.addEventListener('submit', formSubmitHandler); 
+// _______________________________________________________
+
+
+
+
+
+
+
+
+// //Открытие попапа popup_edit
+//  function showPopup() {
+//     popup.classList.add('popup_open');
+//  }
+
+// document.querySelector('#name').value = document.querySelector('.profile__title').textContent;
+// document.querySelector('#job').value = document.querySelector('.profile__subtitle').textContent;
+ 
+//  function closePopup() {
+//     popup.classList.remove('popup_open');
+//  }
+
+//  showPopupButton.addEventListener('click', showPopup);
+//  closePopupButton.addEventListener('click', closePopup);
+
+//  //Открытие попапа popup_new
+//  let popupNew = document.querySelector('.popup_new');
+//  let showProfileButton = document.querySelector('#show-popup-new');
+//  let closeProfileButton = popupNew.querySelector('.popup__close');
+
+//  function showPopupNew () {
+//     popupNew.classList.add('popup_open');
+//  }
+
+//  function closePopupNew () {
+//     popupNew.classList.remove('popup_open');
+//  }
+
+//  showProfileButton.addEventListener('click', showPopupNew);
+//  closeProfileButton.addEventListener('click', closePopupNew);
+
+//  function formSubmitHandler (evt) {
+//     evt.preventDefault(); 
+//     document.querySelector('.profile__title').textContent = nameInput.value; 
+//     document.querySelector('.profile__subtitle').textContent = jobInput.value;
+
+//     closePopup();
+// }
+ 
+// formElement.addEventListener('submit', formSubmitHandler); 
 
  
 
@@ -61,18 +153,7 @@ formElement.addEventListener('submit', formSubmitHandler);
 // showPopupButton.addEventListener('click', togglePopup);
 // closePopupButton.addEventListener('click', togglePopup);
 
-// 6 карточек из коробки
-// Карточки
-// Создайте функцию, которая делает следующее:
-// принимает в качестве аргумента данные карточки (объект с названием и ссылкой на картинку)
-// клонирует внутри себя нужный template (обязательно посмотрите вебинар про template'ы)
-// устанавливает картинку и название в разметку template'a
-// устанавливает обработчики событий: на лайк (1), на удаление (2) и на открытие картинки (3). Обратите внимание, что функции которые вызываются обработчиками событий вам надо вынести в отдельные переменные и за пределы той функции, которая создает карточку
-// возвращает готовую разметку (в которой уже есть все данные и обработчики). Смотрите в сторону return
-// Создайте другую функцию, которая:
-// принимает данные карточки и ссылку на контейнер, куда надо положить результат
-// внутри себя создает разметку карточки, используя функцию о которой написано выше
-// кладет полученный результат в разметку
+
 
 const initialCards = [
     {
