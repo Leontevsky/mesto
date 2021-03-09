@@ -209,38 +209,71 @@ const initialCards = [
 
 // Интерполяция. Пример ${}. Внутри шаблонной строки выполнить JS. 
 
-const container = document.querySelector('.elements__list'); 
+const container = document.querySelector('.elements__list');
+
+function createHTMLstring(item){
+    return `
+        <li class="element">
+            <img src="${item.link}" alt="Фото" class="element__image">
+            <div class="element__caption">
+                <h2 class="element__title">${item.name}</h2> 
+                <button type="button" class="element__button" id= "like"></button>
+                <button type="button" class="element__button_delete "></button>
+            </div>
+        </li> 
+`;
+}
 
 function renderList() {
-    const result = initialCards.map(function(item){
-        return `
-            <li class="element">
-                <img src="${item.link}" alt="Фото" class="element__image">
-                <div class="element__caption">
-                    <h2 class="element__title">${item.name}</h2> 
-                    <button type="button" class="element__button"></button>
-                    <button type="button" class="element__button_delete "></button>
-                </div>
-            </li> 
-    `;
-    }).join('');
+    const result = initialCards.map(createHTMLstring).join('');
 
     container.insertAdjacentHTML('afterbegin', result); // Эта штука превращает строку в разметку
 }
 
 renderList()
+// Добавление карточки //
+const toDoform = document.querySelector('.popup__form_add');
+
+function addTaskFormListener(evt) {
+    evt.preventDefault(); // Отменяем переход по ссылке
+    const input = toDoform.querySelector('#PlaceName'); // нашли input внутри формы
+    const inputTitle = input.value; // вытащили значение
+    const newTask = createHTMLstring({inputTitle});
+    container.insertAdjacentHTML('afterbegin', newTask);
+
+    input.value = ' ';
+}
+
+toDoform.addEventListener('submit', addTaskFormListener);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Черный лайк актив
 
-let likeButtonActive = document.querySelector('.element__button'); //element__button_theme-dark
-const elementCaption = document.querySelector('.element__button');
+ let likeButtonActive = document.querySelector('#like'); 
+ const elementCaption = document.querySelector('.element__button');
 
-function ButtonLikeActive () {
-    elementCaption.classList.add('element__button_theme-dark');
-}
+ function ButtonLikeActive () {
+     elementCaption.classList.add('element__button_theme-dark');
+ }
 
-function ButtonLikeActive () {
-    elementCaption.classList.remove('element__button_theme-dark');
-}
+//  function ButtonLikeActive () {
+//      elementCaption.classList.remove('element__button_theme-dark');
+//  }
 
-likeButtonActive.addEventListener('click', ButtonLikeActive);
+ likeButtonActive.addEventListener('click', ButtonLikeActive);
