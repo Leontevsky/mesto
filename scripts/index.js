@@ -24,19 +24,31 @@ showEditFormButton.addEventListener('click', function () {
     openPopup(editFormPopup)
   })
 
+
 closeEditFormButton.addEventListener('click', function () {
     closePopup(editFormPopup)
 })
 
 showCreateFormButton.addEventListener('click', function () {
-    openPopup(CreateFormPopup)
+    openPopup(сreateFormPopup)
 })
 
 closeCreateFormButton.addEventListener('click', function () {
-    closePopup(CreateFormPopup)
+    closePopup(сreateFormPopup)
 })
 
+document.querySelector('#name').value = document.querySelector('.profile__title').textContent;
+document.querySelector('#job').value = document.querySelector('.profile__subtitle').textContent;
 
+ function formSubmitHandler (evt) {
+    evt.preventDefault(); 
+    document.querySelector('.profile__title').textContent = nameInput.value; 
+    document.querySelector('.profile__subtitle').textContent = jobInput.value;
+
+     closeEditPopup();
+  }
+ 
+  formElement.addEventListener('submit', formSubmitHandler); 
 
 
 
@@ -76,8 +88,7 @@ closeCreateFormButton.addEventListener('click', function () {
 
 // openCardFormButton.addEventListener('click', showCardFormPopup);
 
-// document.querySelector('#name').value = document.querySelector('.profile__title').textContent;
-// document.querySelector('#job').value = document.querySelector('.profile__subtitle').textContent;
+
 
 // function formSubmitHandler (evt) {
 //     evt.preventDefault(); 
@@ -207,7 +218,7 @@ function renderList() {
                 <img src="${item.link}" alt="Фото" class="element__image">
                 <div class="element__caption">
                     <h2 class="element__title">${item.name}</h2> 
-                    <button type="button" class="element__button element__button_theme-dark"></button>
+                    <button type="button" class="element__button"></button>
                     <button type="button" class="element__button_delete "></button>
                 </div>
             </li> 
@@ -219,3 +230,17 @@ function renderList() {
 
 renderList()
 
+//Черный лайк актив
+
+let likeButtonActive = document.querySelector('.element__button'); //element__button_theme-dark
+const elementCaption = document.querySelector('.element__button');
+
+function ButtonLikeActive () {
+    elementCaption.classList.add('element__button_theme-dark');
+}
+
+function ButtonLikeActive () {
+    elementCaption.classList.remove('element__button_theme-dark');
+}
+
+likeButtonActive.addEventListener('click', ButtonLikeActive);

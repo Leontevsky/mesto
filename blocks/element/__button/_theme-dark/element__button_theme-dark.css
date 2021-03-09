@@ -1,3 +1,4 @@
 .element__button_theme-dark {
-    /* Стили на будущее под черное сердечко */
+    background-image: url(../../../../images/like_active_black.png);
+    background-color: transparent;
 }
