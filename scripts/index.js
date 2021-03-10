@@ -12,6 +12,7 @@ let closeCreateFormButton = popupNew.querySelector('.popup__close'); // Кноп
 const editFormPopup = document.querySelector('.popup_edit'); // Нахожу в разметке попап редактирования карточки
 const сreateFormPopup = document.querySelector('.popup_new'); // Нахожу в разметке попап создания новой карточки
 
+
 function openPopup (popup) {
     popup.classList.add('popup_open')
 }
@@ -24,7 +25,6 @@ showEditFormButton.addEventListener('click', function () {
     openPopup(editFormPopup)
   })
 
-
 closeEditFormButton.addEventListener('click', function () {
     closePopup(editFormPopup)
 })
@@ -36,6 +36,10 @@ showCreateFormButton.addEventListener('click', function () {
 closeCreateFormButton.addEventListener('click', function () {
     closePopup(сreateFormPopup)
 })
+
+
+
+
 
 document.querySelector('#name').value = document.querySelector('.profile__title').textContent;
 document.querySelector('#job').value = document.querySelector('.profile__subtitle').textContent;
@@ -234,6 +238,20 @@ function addTaskFormListener(evt) {
 renderList()
 toDoform.addEventListener('submit', addTaskFormListener);
 
+//Открытие карточки на экране
+const imagePopup = document.querySelector('.popup_image'); // Нашел попап просмотра карточки
+
+function PopupWithImage (item) {
+    const newCard = imagePopup.querySelector('.popup__caption');
+    const cardImage = imagePopup.querySelector('.popup__img');
+    newCard.textContent = item.name;
+    cardImage.textContent = item.link;
+    
+}
+
+Cardlink.addEventListener('click', function(){
+    openPopup(imagePopup);
+})
 
 
 
