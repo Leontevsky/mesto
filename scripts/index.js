@@ -181,34 +181,58 @@ const container = document.querySelector('.elements__list');
 const toDoform = document.querySelector('.popup__form_add');
 const templateElement = document.querySelector('#template');
 
-function createCardNew(item){
-	const newItem = templateElement.content.cloneNode(true);
-	const title = newItem.querySelector('.element__title');
-    const Cardlink = newItem.querySelector('.element__image');
-	title.textContent = item.title;
-    Cardlink.textContent = item.link;
+function deleteTaskHendler (evt) {
 
-	return newItem;
+    const target = evt.target;
+    const currentTask = target.closest('.element');
+    currentTask.remove();
+
+    // evt.target.closest('.element').remove(); // тоже самое, только краткая запись
 }
 
+function addTaskListener (task) {
+    // console.log("Обработчики навешаны")
+    const deleteButton = task.querySelector('.element__button_delete');
+    deleteButton.addEventListener('click', deleteTaskHendler);
+}
+
+// Создаем разметку
+function createCardNew(item){
+    const newItem = templateElement.content.cloneNode(true);
+    const title = newItem.querySelector('.element__title');
+    const Cardlink = newItem.querySelector('.element__image');
+    
+    title.textContent = item.name;
+    Cardlink.src = item.link;
+    console.log(item);
+    return newItem;
+    
+}
+// Добавляем карточки из задания
 function renderList() {
-    const result = initialCards.map(createCardNew)
+    const result = initialCards.map(function (item) {
+        const newTask = createCardNew(item)
+        addTaskListener(newTask);
+        return newTask;
+    });
 
     container.append(...result);
 }
-
-// Добавление карточки //
-
+// Добавление карточки
 function addTaskFormListener(evt) {
     evt.preventDefault(); // Отменяем переход по ссылке
     const input = toDoform.querySelector('#PlaceName'); // нашли input внутри формы
-    const inputTitle = input.value; // вытащили значение
-    
-    const newTask = createCardNew({inputTitle});
+    const link = toDoform.querySelector('#Link');
+    const item = {name: input.value, link: link.value}
+    const newTask = createCardNew(item);
     container.prepend(newTask);
-
+    
     input.value = '';
+    link.value = '';
+
+    closePopup(сreateFormPopup); 
 }
+
 
 renderList()
 toDoform.addEventListener('submit', addTaskFormListener);
