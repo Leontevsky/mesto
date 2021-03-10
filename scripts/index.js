@@ -195,18 +195,20 @@ function addTaskListener (task) {
     const deleteButton = task.querySelector('.element__button_delete');
     deleteButton.addEventListener('click', deleteTaskHendler);
 }
-
 // Создаем разметку
 function createCardNew(item){
     const newItem = templateElement.content.cloneNode(true);
     const title = newItem.querySelector('.element__title');
     const Cardlink = newItem.querySelector('.element__image');
-    
     title.textContent = item.name;
     Cardlink.src = item.link;
-    console.log(item);
+// Добавляем лайк
+    const likeIcon = newItem.querySelector('.element__button');
+    function likeButtonToggle(){
+        likeIcon.classList.toggle('element__button_theme-dark');
+    }
+    likeIcon.addEventListener('click', likeButtonToggle);
     return newItem;
-    
 }
 // Добавляем карточки из задания
 function renderList() {
@@ -226,7 +228,7 @@ function addTaskFormListener(evt) {
     const item = {name: input.value, link: link.value}
     const newTask = createCardNew(item);
     container.prepend(newTask);
-    
+    addTaskListener(newTask);
     input.value = '';
     link.value = '';
 
