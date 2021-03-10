@@ -182,19 +182,12 @@ const toDoform = document.querySelector('.popup__form_add');
 const templateElement = document.querySelector('#template');
 
 function deleteTaskHendler (evt) {
-
     const target = evt.target;
     const currentTask = target.closest('.element');
     currentTask.remove();
-
     // evt.target.closest('.element').remove(); // тоже самое, только краткая запись
 }
 
-function addTaskListener (task) {
-    // console.log("Обработчики навешаны")
-    const deleteButton = task.querySelector('.element__button_delete');
-    deleteButton.addEventListener('click', deleteTaskHendler);
-}
 // Создаем разметку
 function createCardNew(item){
     const newItem = templateElement.content.cloneNode(true);
@@ -202,19 +195,23 @@ function createCardNew(item){
     const Cardlink = newItem.querySelector('.element__image');
     title.textContent = item.name;
     Cardlink.src = item.link;
+    
 // Добавляем лайк
     const likeIcon = newItem.querySelector('.element__button');
     function likeButtonToggle(){
-        likeIcon.classList.toggle('element__button_theme-dark');
+        likeIcon.classList.toggle('element__button_theme-dark')
     }
     likeIcon.addEventListener('click', likeButtonToggle);
+
+// перенес из функции addTaskListener
+    const deleteButton = newItem.querySelector('.element__button_delete');
+    deleteButton.addEventListener('click', deleteTaskHendler);
     return newItem;
 }
 // Добавляем карточки из задания
 function renderList() {
     const result = initialCards.map(function (item) {
         const newTask = createCardNew(item)
-        addTaskListener(newTask);
         return newTask;
     });
 
@@ -228,10 +225,8 @@ function addTaskFormListener(evt) {
     const item = {name: input.value, link: link.value}
     const newTask = createCardNew(item);
     container.prepend(newTask);
-    addTaskListener(newTask);
     input.value = '';
     link.value = '';
-
     closePopup(сreateFormPopup); 
 }
 
