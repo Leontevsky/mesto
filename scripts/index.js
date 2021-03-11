@@ -210,8 +210,24 @@ function createCardNew(item){
 // перенес из функции addTaskListener
     const deleteButton = newItem.querySelector('.element__button_delete');
     deleteButton.addEventListener('click', deleteTaskHendler);
+
+// Слушатель карточки
+    Cardlink.addEventListener('click', PopupWithImage);
+
     return newItem;
 }
+
+//Открытие карточки на экране
+const imagePopup = document.querySelector('.popup_image'); // Нашел попап просмотра карточки
+
+function PopupWithImage (item) {
+    const newCard = imagePopup.querySelector('.popup__caption');
+    const cardImage = imagePopup.querySelector('.popup__img');
+    newCard.textContent = item.name;
+    cardImage.textContent = item.link;
+    openPopup(imagePopup);
+}
+
 // Добавляем карточки из задания
 function renderList() {
     const result = initialCards.map(function (item) {
@@ -238,20 +254,9 @@ function addTaskFormListener(evt) {
 renderList()
 toDoform.addEventListener('submit', addTaskFormListener);
 
-//Открытие карточки на экране
-const imagePopup = document.querySelector('.popup_image'); // Нашел попап просмотра карточки
 
-function PopupWithImage (item) {
-    const newCard = imagePopup.querySelector('.popup__caption');
-    const cardImage = imagePopup.querySelector('.popup__img');
-    newCard.textContent = item.name;
-    cardImage.textContent = item.link;
-    
-}
 
-Cardlink.addEventListener('click', function(){
-    openPopup(imagePopup);
-})
+
 
 
 
