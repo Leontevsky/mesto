@@ -212,7 +212,9 @@ function createCardNew(item){
     deleteButton.addEventListener('click', deleteTaskHendler);
 
 // Слушатель карточки
-    Cardlink.addEventListener('click', PopupWithImage);
+    Cardlink.addEventListener('click', function(){
+      PopupWithImage(item);
+    });
 
     return newItem;
 }
@@ -224,9 +226,15 @@ function PopupWithImage (item) {
     const newCard = imagePopup.querySelector('.popup__caption');
     const cardImage = imagePopup.querySelector('.popup__img');
     newCard.textContent = item.name;
-    cardImage.textContent = item.link;
+    cardImage.src = item.link;
     openPopup(imagePopup);
 }
+
+let closePopupWithImageButton = imagePopup.querySelector('.popup__close');
+
+closePopupWithImageButton.addEventListener('click', function () {
+  closePopup(imagePopup)
+})
 
 // Добавляем карточки из задания
 function renderList() {
