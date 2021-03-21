@@ -151,8 +151,19 @@ toDoform.addEventListener('submit', addTaskFormListener);
 
 
 
+// 6 Проектная работа
 
+const enableValidation = () => { // enableValidation - включаем валидацию для всех форм сразу
+  const formList = Array.from(document.querySelectorAll('.popup__form'))  // ищем все формы на странице и превращаем в массив.
+  
+  formList.forEach(formElement => {
+    formElement.addEventListener('submit', function (event) { 
+      event.preventDefault(); // запрещаем отправку данных на сервер через .preventDefault
+    })
+  })
+}
 
+enableValidation ();
 
 
 
