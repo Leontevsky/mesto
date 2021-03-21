@@ -38,8 +38,8 @@
                 <button type="button" class="popup__close" id="popup-close"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form action="URL" class="popup__form" name="form" id="popup-form">
-                    <input type="text" name="name" placeholder="Жак-Ив Кусто" class="popup__input popup__input_type_name" id="name">
-                    <input type="text" name="about" placeholder="Исследователь океана" class="popup__input popup__input_type_name" id="job">
+                    <input type="text" name="name" placeholder="Жак-Ив Кусто" class="popup__input popup__input_type_name" id="name" minlength="2" maxlength="40" required>
+                    <input type="text" name="about" placeholder="Исследователь океана" class="popup__input popup__input_type_name" id="job" required>
                     <button type="submit" class="popup__button">Сохранить</button>
                 </form>
             </div>
