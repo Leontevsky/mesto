@@ -153,22 +153,45 @@ toDoform.addEventListener('submit', addTaskFormListener);
 
 // 6 Проектная работа
 
-const showInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
+const allInputsEmpty = (inputList) => {
+  //Если true - все поля пустые
+  return !inputList.some(inputElement => inputElement.value.length > 0)
 }
 
-const hideInputError = () => {}
+const hasInvalidInput = (inputList) => {
+ return inputList.some(inputElement => !inputElement.validity.valid)
+}
 
-// функция checkInput проверяет валидность поля
-const checkInput = (formElement, inputElement) {
-  if (inputElement.validity.valid) {
-    // Убрать подкрашивание красным
-    // Убрать ошибку
+const toggleButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList) || allInputsEmpty(inputList)) {
+    buttonElement.classList.add('popup__button_disabled')
+    buttonElement.setAttribute('disabled', true)
   } else {
-    showInputError(formElement, inputElement)// Покрасить поле красным // Вывести ошибку
+    buttonElement.classList.remove('popup__button_disabled')
+    buttonElement.removeAttribute('disabled')
   }
 }
 
+// функция showInputError красит поле красным и выводит ошибку
+const showInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
+  inputElement.classList.add('popup__input_type_error')
+  errorElement.textContent = inputElement.validationMessage;
+  errorElement.classList.add('popup__error_visible')
+}
+
+// функция hideInputError убирает красное поле и снимает ошибку
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
+  inputElement.classList.remove('popup__input_type_error')
+  errorElement.classList.remove('popup__error_visible')
+}
+
+// функция checkInput проверяет валидность поля
+const checkInput = (formElement, inputElement) => {
+  if (inputElement.validity.valid) {hideInputError(formElement, inputElement)} 
+  else {showInputError(formElement, inputElement)}
+}
 
 // функция setInputListeners навешивает обработчики на все поля формы
 const setInputListeners = (formElement) => {
@@ -177,9 +200,10 @@ const setInputListeners = (formElement) => {
   inputList.forEach(
     inputElement => {
     inputElement.addEventListener('input', () =>{
-      checkInput(formElement, inputElement)// Проверить сотояние поля. Валидно ли оно?
-      // Переключить состояние кнопки
+      checkInput(formElement, inputElement) // Проверить сотояние поля. Валидно ли оно?
+      toggleButtonState(inputList, buttonElement) // Переключить состояние кнопки
     })
+    toggleButtonState(inputList, buttonElement)
     }
   )
 }
@@ -187,7 +211,6 @@ const setInputListeners = (formElement) => {
 // функция enableValidation - включаем валидацию для всех форм сразу
 const enableValidation = () => { 
   const formList = Array.from(document.querySelectorAll('.popup__form'))  // ищем все формы на странице и превращаем в массив.
-  
   formList.forEach(
     formElement => {
     formElement.addEventListener('submit', function (event) { 
@@ -196,8 +219,8 @@ const enableValidation = () => {
     setInputListeners(formElement) //Навесить слушатели для полей формы
   })
 }
-
 enableValidation ();
+
 
 
 
