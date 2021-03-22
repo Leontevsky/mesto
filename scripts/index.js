@@ -194,39 +194,40 @@ const checkInput = (formElement, inputElement) => {
 }
 
 // функция setInputListeners навешивает обработчики на все поля формы
-const setInputListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input')) // ищем все input
-  const buttonElement = formElement.querySelector('.popup__button') // ищем кнопку 
+const setInputListeners = (formElement, {inputSelector,  submitButtonSelector, ...rest }) => {
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector)) // ищем все input
+  const buttonElement = formElement.querySelector(submitButtonSelector) // ищем кнопку 
   inputList.forEach(
     inputElement => {
-    inputElement.addEventListener('input', () =>{
-      checkInput(formElement, inputElement) // Проверить сотояние поля. Валидно ли оно?
-      toggleButtonState(inputList, buttonElement) // Переключить состояние кнопки
+    inputElement.addEventListener('input', () => {
+      checkInput(formElement, inputElement, rest) // Проверить сотояние поля. Валидно ли оно?
+      toggleButtonState(inputList, buttonElement, rest) // Переключить состояние кнопки
     })
-    toggleButtonState(inputList, buttonElement)
-    }
+    toggleButtonState(inputList, buttonElement, rest)
+    } 
   )
 }
 
-// функция enableValidation - включаем валидацию для всех форм сразу
-const enableValidation = () => { 
-  const formList = Array.from(document.querySelectorAll('.popup__form'))  // ищем все формы на странице и превращаем в массив.
-  formList.forEach(
-    formElement => {
+
+
+const enableValidation = ({formSelector, ...rest}) => {
+  const formList = Array.from(document.querySelectorAll(formSelector)) //нашли все формы  из конфигураций
+  formList.forEach(formElement => {
     formElement.addEventListener('submit', function (event) { 
       event.preventDefault(); // запрещаем отправку данных на сервер через .preventDefault
     })
-    setInputListeners(formElement) //Навесить слушатели для полей формы
+    setInputListeners(formElement, rest) //Навесить слушатели для полей формы
   })
 }
-enableValidation ();
 
-
-
-
-
-
-
+enableValidation ({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+});
 
 
 
