@@ -153,17 +153,43 @@ toDoform.addEventListener('submit', addTaskFormListener);
 
 // 6 Проектная работа
 
+const showInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
+}
+
+const hideInputError = () => {}
+
+// функция checkInput проверяет валидность поля
+const checkInput = (formElement, inputElement) {
+  if (inputElement.validity.valid) {
+    // Убрать подкрашивание красным
+    // Убрать ошибку
+  } else {
+    showInputError(formElement, inputElement)// Покрасить поле красным // Вывести ошибку
+  }
+}
+
+
 // функция setInputListeners навешивает обработчики на все поля формы
 const setInputListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll('.popup__input')) // ищем все input
   const buttonElement = formElement.querySelector('.popup__button') // ищем кнопку 
+  inputList.forEach(
+    inputElement => {
+    inputElement.addEventListener('input', () =>{
+      checkInput(formElement, inputElement)// Проверить сотояние поля. Валидно ли оно?
+      // Переключить состояние кнопки
+    })
+    }
+  )
 }
 
 // функция enableValidation - включаем валидацию для всех форм сразу
 const enableValidation = () => { 
   const formList = Array.from(document.querySelectorAll('.popup__form'))  // ищем все формы на странице и превращаем в массив.
   
-  formList.forEach(formElement => {
+  formList.forEach(
+    formElement => {
     formElement.addEventListener('submit', function (event) { 
       event.preventDefault(); // запрещаем отправку данных на сервер через .preventDefault
     })
@@ -172,8 +198,6 @@ const enableValidation = () => {
 }
 
 enableValidation ();
-
-
 
 
 

@@ -37,8 +37,9 @@
             <div class="popup__content">
                 <button type="button" class="popup__close" id="popup-close"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <form action="URL" class="popup__form" name="form" id="popup-form">
+                <form action="URL" class="popup__form" name="form" id="popup-form" >
                     <input type="text" name="name" placeholder="Жак-Ив Кусто" class="popup__input popup__input_type_name" id="name" minlength="2" maxlength="40" required>
+                    <span id="name-error"></span>
                     <input type="text" name="about" placeholder="Исследователь океана" class="popup__input popup__input_type_name" id="job" required>
                     <button type="submit" class="popup__button">Сохранить</button>
                 </form>
@@ -49,7 +50,7 @@
             <div class="popup__content">
                 <button type="button" class="popup__close" id = "popup-close-new"></button>
                 <h3 class="popup__title">Новое место</h3>
-                <form action="URL" class="popup__form popup__form_add" id = 'popup-form-new' name="text">
+                <form action="URL" class="popup__form popup__form_add" id = 'popup-form-new' name="text" >
                     <input type="text" name="name" placeholder="Название" class="popup__input popup__input_type_name" id="PlaceName">
                     <input type="text" name="about" placeholder="Ссылка на картинку" class="popup__input popup__input_type_name" id="Link">
                     <button type="submit" class="popup__button">Сохранить</button>
@@ -79,5 +80,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>
