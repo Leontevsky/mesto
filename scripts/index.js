@@ -46,12 +46,21 @@ const newCard = imagePopup.querySelector('.popup__caption');
 const cardImage = imagePopup.querySelector('.popup__img');
 const closePopupWithImageButton = imagePopup.querySelector('.popup__close');
 
+
+
+const closedPopupByPressEsc = function (event) {
+  const popupAll = document.querySelector('.popup')
+    if (event.key === 'Escape') {closePopup(popupAll)}
+}
+
 function openPopup (popup) {
     popup.classList.add('popup_open')
+    document.addEventListener('keydown', closedPopupByPressEsc)
 }
 
 function closePopup (popup) {
     popup.classList.remove('popup_open')
+    document.removeEventListener('keydown', closedPopupByPressEsc)
 }
 
 showEditFormButton.addEventListener('click', function () {
@@ -229,7 +238,13 @@ enableValidation ({
   errorClass: 'popup__error_visible'
 });
 
+// const closedPopupOnMouseClick = function (event) {
+//   const popup = document.querySelector('.popup_open')
+//   const popupNew = popup.querySelector('.popup_new')
+//   const cardImage = popup.querySelector('.popup_image')
 
+//   }
+// }
 
 
 
