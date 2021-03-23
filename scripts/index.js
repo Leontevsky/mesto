@@ -49,8 +49,8 @@ const closePopupWithImageButton = imagePopup.querySelector('.popup__close');
 
 
 const closedPopupByPressEsc = function (event) {
-  const popupAll = document.querySelector('.popup')
-    if (event.key === 'Escape') {closePopup(popupAll)}
+  const popupAny = document.querySelector('.popup_open')
+    if (event.key === 'Escape') {closePopup(popupAny)}
 }
 
 function openPopup (popup) {
@@ -59,7 +59,7 @@ function openPopup (popup) {
 }
 
 function closePopup (popup) {
-    popup.classList.remove('popup_open')
+  popup.classList.remove('popup_open')
     document.removeEventListener('keydown', closedPopupByPressEsc)
 }
 
