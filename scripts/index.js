@@ -39,8 +39,8 @@ const jobUserInput = document.querySelector('.profile__subtitle');
 const container = document.querySelector('.elements__list');
 const toDoform = document.querySelector('.popup__form_add');
 const templateElement = document.querySelector('#template');
-const input = toDoform.querySelector('#PlaceName'); // нашли input внутри формы
-const link = toDoform.querySelector('#Link');
+const input = toDoform.querySelector('#placeName'); // нашли input внутри формы
+const link = toDoform.querySelector('#link');
 const imagePopup = document.querySelector('.popup_image'); // Нашел попап просмотра карточки
 const newCard = imagePopup.querySelector('.popup__caption');
 const cardImage = imagePopup.querySelector('.popup__img');
@@ -162,38 +162,38 @@ const hasInvalidInput = (inputList) => {
  return inputList.some(inputElement => !inputElement.validity.valid)
 }
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, {inactiveButtonClass}) => {
   if (hasInvalidInput(inputList) || allInputsEmpty(inputList)) {
-    buttonElement.classList.add('popup__button_disabled')
+    buttonElement.classList.add(inactiveButtonClass)
     buttonElement.setAttribute('disabled', true)
   } else {
-    buttonElement.classList.remove('popup__button_disabled')
+    buttonElement.classList.remove(inactiveButtonClass)
     buttonElement.removeAttribute('disabled')
   }
 }
 
 // функция showInputError красит поле красным и выводит ошибку
-const showInputError = (formElement, inputElement) => {
+const showInputError = (formElement, inputElement, {inputErrorClass, errorClass}) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
-  inputElement.classList.add('popup__input_type_error')
+  inputElement.classList.add(inputErrorClass)
   errorElement.textContent = inputElement.validationMessage;
-  errorElement.classList.add('popup__error_visible')
+  errorElement.classList.add(errorClass)
 }
 
 // функция hideInputError убирает красное поле и снимает ошибку
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement,{inputErrorClass, errorClass}) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
-  inputElement.classList.remove('popup__input_type_error')
-  errorElement.classList.remove('popup__error_visible')
+  inputElement.classList.remove(inputErrorClass)
+  errorElement.classList.remove(errorClass)
 }
 
 // функция checkInput проверяет валидность поля
-const checkInput = (formElement, inputElement) => {
-  if (inputElement.validity.valid) {hideInputError(formElement, inputElement)} 
-  else {showInputError(formElement, inputElement)}
+const checkInput = (formElement, inputElement, rest) => {
+  if (inputElement.validity.valid) {hideInputError(formElement, inputElement, rest)} 
+  else {showInputError(formElement, inputElement, rest)}
 }
 
-// функция setInputListeners навешивает обработчики на все поля формы
+// функция setInputListeners навешивает обработчики на все поля формы +
 const setInputListeners = (formElement, {inputSelector,  submitButtonSelector, ...rest }) => {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector)) // ищем все input
   const buttonElement = formElement.querySelector(submitButtonSelector) // ищем кнопку 
@@ -209,10 +209,10 @@ const setInputListeners = (formElement, {inputSelector,  submitButtonSelector, .
 }
 
 
-
+// +
 const enableValidation = ({formSelector, ...rest}) => {
   const formList = Array.from(document.querySelectorAll(formSelector)) //нашли все формы  из конфигураций
-  formList.forEach(formElement => {
+  formList.forEach(function (formElement) {
     formElement.addEventListener('submit', function (event) { 
       event.preventDefault(); // запрещаем отправку данных на сервер через .preventDefault
     })
