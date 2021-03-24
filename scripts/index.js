@@ -48,6 +48,18 @@ const closePopupWithImageButton = imagePopup.querySelector('.popup__close');
 
 
 
+const popupEdit = document.querySelector('.popup_edit')
+const popupCreate = document.querySelector('.popup_new')
+const popupImage = document.querySelector('.popup_image')
+
+const closeByOverlayClick = (evt) => {
+  if (evt.target.classList.contains('popup')) { closePopup(evt.target) }// вот тут тебе надо написать логику закрытия попапа, используя evt.target (это ссылка на элемент на который было произведено нажатие)
+}
+popupEdit.addEventListener('click', closeByOverlayClick)
+popupImage.addEventListener('click', closeByOverlayClick)
+popupCreate.addEventListener('click', closeByOverlayClick)
+
+
 const closedPopupByPressEsc = function (event) {
   const popupAny = document.querySelector('.popup_open')
     if (event.key === 'Escape') {closePopup(popupAny)}
@@ -238,13 +250,6 @@ enableValidation ({
   errorClass: 'popup__error_visible'
 });
 
-// const closedPopupOnMouseClick = function (event) {
-//   const popup = document.querySelector('.popup_open')
-//   const popupNew = popup.querySelector('.popup_new')
-//   const cardImage = popup.querySelector('.popup_image')
-
-//   }
-// }
 
 
 
