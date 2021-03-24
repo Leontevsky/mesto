@@ -45,16 +45,14 @@ const imagePopup = document.querySelector('.popup_image'); // Нашел поп�
 const newCard = imagePopup.querySelector('.popup__caption');
 const cardImage = imagePopup.querySelector('.popup__img');
 const closePopupWithImageButton = imagePopup.querySelector('.popup__close');
-
-
-
 const popupEdit = document.querySelector('.popup_edit')
 const popupCreate = document.querySelector('.popup_new')
 const popupImage = document.querySelector('.popup_image')
 
 const closeByOverlayClick = (evt) => {
-  if (evt.target.classList.contains('popup')) { closePopup(evt.target) }// вот тут тебе надо написать логику закрытия попапа, используя evt.target (это ссылка на элемент на который было произведено нажатие)
+  if (evt.target.classList.contains('popup')) { closePopup(evt.target) }
 }
+
 popupEdit.addEventListener('click', closeByOverlayClick)
 popupImage.addEventListener('click', closeByOverlayClick)
 popupCreate.addEventListener('click', closeByOverlayClick)
@@ -132,7 +130,6 @@ function createCardNew(item){
     cardlink.addEventListener('click', function(){
       popupWithImage(item);
     });
-
     return newItem;
 }
 
