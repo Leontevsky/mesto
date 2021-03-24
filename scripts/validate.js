@@ -1,12 +1,3 @@
-enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-  });
-
 const allInputsEmpty = (inputList) => {
   //Если true - все поля пустые
   return !inputList.some(inputElement => inputElement.value.length > 0)
@@ -71,3 +62,12 @@ const enableValidation = ({formSelector, ...rest}) => {
     setInputListeners(formElement, rest) //Навесить слушатели для полей формы
   })
 }
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+});

@@ -10,6 +10,7 @@
     align-self: center;
     display: flex;
     background-size: 10px 10px;
+    cursor: pointer;
 }
 
 .profile__select-button:hover {
