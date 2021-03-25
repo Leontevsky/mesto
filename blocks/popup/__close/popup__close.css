@@ -16,6 +16,11 @@
     background-position: center;
 }
 
+.popup__close:hover {
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
 @media all and (max-width: 560px) {
     .popup__close {
         top: -35px;

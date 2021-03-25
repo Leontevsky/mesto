@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,11 +34,11 @@
             <p class="footer__author">© 2020 Mesto Russia</p>
         </footer>
 
-        <div class="popup popup_edit">
+        <div class="popup popup_type_edit">
             <div class="popup__content">
                 <button type="button" class="popup__close" id="popup-close"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <form action="URL" class="popup__form" name="form" id="popup-form" >
+                <form action="URL" class="popup__form" name="form" id="popup-form" novalidate>
                     <input type="text" name="name" placeholder="Жак-Ив Кусто" class="popup__input popup__input_type_name" id="name" minlength="2" maxlength="40" required>
                     <span id="name-error" class="popup__error"></span>
                     <input type="text" name="about" placeholder="Исследователь океана" class="popup__input popup__input_type_name" id="job" minlength="2" maxlength="200" required>
@@ -47,11 +48,11 @@
             </div>
         </div>
 
-        <div class="popup popup_new">
+        <div class="popup popup_type_new">
             <div class="popup__content">
-                <button type="button" class="popup__close" id = "popup-close-new"></button>
+                <button type="button" class="popup__close" id="popup-close-new"></button>
                 <h3 class="popup__title">Новое место</h3>
-                <form action="URL" class="popup__form popup__form_add" id = 'popup-form-new' name="text" >
+                <form action="URL" class="popup__form popup__form_add" id="popup-form-new" name="text" novalidate>
                     <input type="text" name="name" placeholder="Название" class="popup__input popup__input_type_name" id="placeName" required minlength="2" maxlength="30">
                     <span id="placeName-error" class="popup__error"></span>
                     <input type="url" name="about" placeholder="Ссылка на картинку" class="popup__input popup__input_type_name" id="link" required>
@@ -61,14 +62,14 @@
             </div>
         </div>
 
-        <div class="popup popup_image"> 
+        <div class="popup popup_type_image">
             <div class="popup__content popup__content_image">
                 <button type="button" class="popup__close" id='popup-image-button'></button>
                 <img src="#" alt="Картинка" class="popup__img">
                 <p class="popup__caption"></p>
             </div>
         </div>
-        
+
     </div>
 
     <template class="template" id="template">
@@ -82,7 +83,9 @@
         </li> 
     </template>
 
-    <script src="./scripts/index.js"></script>
     <script src="./scripts/validate.js"></script>
+    <script src="./scripts/index.js"></script>
+
 </body>
+
 </html>

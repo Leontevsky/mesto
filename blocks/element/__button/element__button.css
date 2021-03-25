@@ -9,9 +9,8 @@
     background-repeat: no-repeat;
     background-position: 50%;
     transition: .5s;
+    cursor: pointer;
 }
-
-
 
 .element__button:hover {
     opacity: .5;
