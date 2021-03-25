@@ -163,7 +163,7 @@ function renderList() {
     container.append(...result);
 }
 // Добавление карточки
-function addTaskFormListener(evt) {
+function handleCardFormSubmit(evt) {
     evt.preventDefault(); // Отменяем переход по ссылке
     const item = { name: popupInput.value, link: link.value }
     const newTask = createCardNew(item);
@@ -174,4 +174,4 @@ function addTaskFormListener(evt) {
 }
 
 renderList()
-cardFormElement.addEventListener('submit', addTaskFormListener);
+cardFormElement.addEventListener('submit', handleCardFormSubmit);

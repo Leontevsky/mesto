@@ -3,6 +3,7 @@
     min-height: 282px;
     max-height: 282px;
     background-size: cover;
-    display: block; /*Отступ на картинку*/
+    display: block;
+    /*Отступ на картинку*/
     cursor: pointer;
 }
