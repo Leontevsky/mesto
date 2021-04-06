@@ -14,7 +14,8 @@ class Card {
     constructor(name, link, cardSelector) {
         this._text = name
         this._link = link
-
+        console.log(this._text)
+        console.log(this._link)
         this._cardSelector = cardSelector;
     }
 
@@ -28,25 +29,28 @@ class Card {
             .cloneNode(true)
 
         return cardElement;
+
     }
 
     // 2 шаг. Публичный метод возвращает представление карточки на странице
     generateCard() {
         this._element = this._getTemplate()
-
-        this._element.querySelector('.element__image').style.backgroundImage = `url(${this._link})`
+        console.log(this._element)
+        this._element.querySelector('.element__image').src = this._link
         this._element.querySelector('.element__title').textContent = this._text
 
         return this._element
     }
 
+    // _setEventListeners() {
+    //     // Слушатель кнопки лайка
+    //     // Слушатель удаления карточки
+    //     // Слушатель открытия карточки
+    // }
+
+    // функция добавления лайка
+    // функция удаления карточки
+    // функция открытия карточки
 }
 
-// 3 шаг. Вставляем в DOM
-initialCards.forEach(function(item) {
-    // Создадим экземпляр карточки
-    const card = new Card(item.name, item.link)
-    const cardElement = card.generateCard()
-
-    document.querySelector('.elements').append(cardElement);
-})
+export default Card
