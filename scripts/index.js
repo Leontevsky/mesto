@@ -1,4 +1,4 @@
-const initialCards = [{
+/* const initialCards = [{
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
     },
@@ -174,4 +174,4 @@ function handleCardFormSubmit(evt) {
 }
 
 renderList()
-cardFormElement.addEventListener('submit', handleCardFormSubmit);
+cardFormElement.addEventListener('submit', handleCardFormSubmit);*/
