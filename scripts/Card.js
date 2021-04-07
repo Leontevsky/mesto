@@ -1,5 +1,6 @@
 import { openPopup } from '../scripts/utils.js'
 import { imagePopup, imagePopupImg, imagePopupTitle } from '../scripts/constants.js'
+import { closedPopupByPressEsc } from '../scripts/index.js'
 
 class Card {
     constructor(name, link, cardSelector) {
@@ -54,6 +55,7 @@ class Card {
         imagePopupImg.src = this._link
         imagePopupTitle.alt = this._text
         openPopup(imagePopup)
+        document.addEventListener('keydown', closedPopupByPressEsc)
     }
 }
 

@@ -27,3 +27,5 @@ export const initialCards = [{
 export const imagePopup = document.querySelector('.popup_type_image') // ЭТО ПОПАП С КАРТИНКОЙ
 export const imagePopupImg = imagePopup.querySelector('.popup__img') // ЭТО ТЕГ IMG ВНУТРИ ПОПАПА
 export const imagePopupTitle = imagePopup.querySelector('.popup__caption') // ЭТО ЗАГОЛОВОК ВНУТРИ ПОПАПА
+
+export const closePopupWithImageButton = imagePopup.querySelector('.popup__close'); // Нашел кнопку закрытия карточки просмотра

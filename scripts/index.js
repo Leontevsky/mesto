@@ -1,5 +1,6 @@
-import { initialCards } from '../scripts/constants.js'
+import { initialCards, imagePopup, closePopupWithImageButton, } from '../scripts/constants.js'
 import Card from '../scripts/Card.js';
+import { closePopup } from '../scripts/utils.js'
 
 // 3 шаг(Перенес из Card.js). Вставляем в DOM
 initialCards.forEach(function(item) {
@@ -9,6 +10,20 @@ initialCards.forEach(function(item) {
 
     document.querySelector('.elements__list').append(cardElement);
 })
+
+// Закрыть карточку по клику на крестик
+closePopupWithImageButton.addEventListener('click', function() {
+    closePopup(imagePopup)
+    document.removeEventListener('keydown', closedPopupByPressEsc)
+})
+
+// Закрыть карточку по ESC
+export const closedPopupByPressEsc = function(event) {
+    const popupAny = document.querySelector('.popup_open')
+    if (event.key === 'Escape') { closePopup(popupAny) }
+}
+
+
 
 /*
 const showEditFormButton = document.querySelector('#show-popup'); // кнопка которая открывает мне попап редактирования карточки
