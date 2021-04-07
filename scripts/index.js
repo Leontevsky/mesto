@@ -1,6 +1,6 @@
-import { initialCards, imagePopup, closePopupWithImageButton, } from '../scripts/constants.js'
+import { initialCards, imagePopup, closePopupWithImageButton, popupEdit, popupImage, popupCreate } from '../scripts/constants.js'
 import Card from '../scripts/Card.js';
-import { closePopup } from '../scripts/utils.js'
+import { closePopup, openPopup } from '../scripts/utils.js'
 
 // 3 шаг(Перенес из Card.js). Вставляем в DOM
 initialCards.forEach(function(item) {
@@ -23,6 +23,48 @@ export const closedPopupByPressEsc = function(event) {
     if (event.key === 'Escape') { closePopup(popupAny) }
 }
 
+// Закрыть карточку по нажатию на оверлей
+const closeByOverlayClick = (evt) => {
+    if (evt.target.classList.contains('popup')) { closePopup(evt.target) }
+}
+
+popupEdit.addEventListener('click', closeByOverlayClick)
+popupImage.addEventListener('click', closeByOverlayClick)
+popupCreate.addEventListener('click', closeByOverlayClick)
+
+
+
+
+const showEditFormButton = document.querySelector('#show-popup')
+const editFormPopup = document.querySelector('.popup_type_edit')
+const popupNew = document.querySelector('.popup_type_new')
+const closeEditFormButton = document.querySelector('#popup-close')
+const showCreateFormButton = document.querySelector('#show-popup-new')
+const closeCreateFormButton = popupNew.querySelector('.popup__close')
+const nameInput = document.querySelector('#name')
+const jobInput = document.querySelector('#job')
+const nameUserInput = document.querySelector('.profile__title')
+const jobUserInput = document.querySelector('.profile__subtitle')
+
+showEditFormButton.addEventListener('click', function() {
+    openPopup(editFormPopup)
+    nameInput.value = nameUserInput.textContent;
+    jobInput.value = jobUserInput.textContent;
+    activeFormButton(buttonEdit, 'popup__button_disabled')
+})
+
+closeEditFormButton.addEventListener('click', function() {
+    closePopup(editFormPopup)
+})
+
+showCreateFormButton.addEventListener('click', function() {
+    openPopup(popupNew)
+    inActiveFormButton(buttonNew, 'popup__button_disabled')
+})
+
+closeCreateFormButton.addEventListener('click', function() {
+    closePopup(popupNew)
+})
 
 
 /*
