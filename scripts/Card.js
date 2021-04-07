@@ -14,8 +14,8 @@ class Card {
     constructor(name, link, cardSelector) {
         this._text = name
         this._link = link
-        console.log(this._text)
-        console.log(this._link)
+            // console.log(this._text)
+            // console.log(this._link)
         this._cardSelector = cardSelector;
     }
 
@@ -36,21 +36,34 @@ class Card {
     generateCard() {
         this._element = this._getTemplate()
         console.log(this._element)
+        this._setEventListeners()
         this._element.querySelector('.element__image').src = this._link
         this._element.querySelector('.element__title').textContent = this._text
 
         return this._element
     }
 
-    // _setEventListeners() {
-    //     // Слушатель кнопки лайка
-    //     // Слушатель удаления карточки
-    //     // Слушатель открытия карточки
-    // }
+    _setEventListeners() {
+        //Слушатель кнопки лайка
+        this._element.querySelector('.element__button').addEventListener('click', () => { this._handleLikeIcon() })
+
+        //Слушатель удаления карточки
+        this._element.querySelector('.element__button_delete').addEventListener('click', () => { this._handleDeleteButton() })
+
+        //Слушатель открытия карточки
+        this._element.querySelector('.element__image').addEventListener('click', () => { this._handlePrevImage() })
+    }
 
     // функция добавления лайка
+    _handleLikeIcon() { this._element.querySelector('.element__button').classList.toggle('element__button_theme-dark') }
+
     // функция удаления карточки
+    _handleDeleteButton() { this._element.remove() }
+
     // функция открытия карточки
+    _handlePrevImage() {
+        // Тут должна быть какая-то функция
+    }
 }
 
 export default Card
