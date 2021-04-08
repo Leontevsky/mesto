@@ -2,7 +2,7 @@ import { openPopup } from '../scripts/utils.js'
 import { imagePopup, imagePopupImg, imagePopupTitle } from '../scripts/constants.js'
 import { closedPopupByPressEsc } from '../scripts/index.js'
 
-class Card {
+export class Card {
     constructor(name, link, cardSelector) {
         this._text = name
         this._link = link
