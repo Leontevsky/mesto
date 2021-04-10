@@ -49,9 +49,10 @@ export const jobUserInput = document.querySelector('.profile__subtitle')
 
 export const buttonNew = popupNew.querySelector('.popup__button')
 export const buttonEdit = editFormPopup.querySelector('.popup__button')
-export const cardFormElement = document.querySelector('.popup__form_add');
-export const popupInput = cardFormElement.querySelector('#placeName');
-export const container = document.querySelector('.elements__list');
+export const cardFormElement = document.querySelector('.popup__form_add')
+export const popupInput = cardFormElement.querySelector('#placeName')
+export const popupLink = cardFormElement.querySelector('#link')
+export const container = document.querySelector('.elements__list')
 
 export const enableValidation = {
     formSelector: '.popup__form',

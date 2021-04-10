@@ -1,8 +1,3 @@
-// Второй класс который вам надо реализовать - FormValidator. Вот на что надо обратить внимание:
-// Как сказано в задании конструктор при создании экземпляра класса должен принимать два аргумента - конфигурации которые вы ранее передавали в функцию enableValidation (они сразу же деструктурируются и попадают в свойства через this), а также ссылка на форму которую необходимо валидировать.
-// Внутри класса по сути единственным публичным методом будет тот метод, который вы будете запускать чтобы наложить валидацию на форму
-// Все остальные методы которые раньше были частью логики enableValidation должны стать приватными методами класса FormValidator
-
 export class FormValidator {
     constructor(config, formElement) {
         this._inputSelector = config.inputSelector
@@ -60,8 +55,6 @@ export class FormValidator {
     _checkInput = (inputElement) => {
         if (inputElement.validity.valid) { this._hideInputError(inputElement) } else { this._showInputError(inputElement) }
     }
-
-
 
     // функция setInputListeners навешивает обработчики на все поля формы
     _setInputListeners = () => {

@@ -1,6 +1,6 @@
 import { openPopup } from '../scripts/utils.js'
 import { imagePopup, imagePopupImg, imagePopupTitle } from '../scripts/constants.js'
-import { closedPopupByPressEsc } from '../scripts/index.js'
+import { closedPopupByPressEsc } from '../scripts/utils.js'
 
 export class Card {
     constructor(name, link, cardSelector) {
@@ -28,7 +28,6 @@ export class Card {
         this._setEventListeners()
         this._element.querySelector('.element__image').src = this._link
         this._element.querySelector('.element__title').textContent = this._text
-        console.log(this._element)
         return this._element
     }
 

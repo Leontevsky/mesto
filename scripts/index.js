@@ -17,6 +17,7 @@ import {
     jobUserInput,
     cardFormElement,
     popupInput,
+    popupLink,
     container,
     enableValidation,
 } from '../scripts/constants.js'
@@ -24,26 +25,36 @@ import { Card } from './Card.js';
 import { closePopup, openPopup } from '../scripts/utils.js'
 import { FormValidator } from './FormValidator.js'
 
-// 3 шаг(Перенес из Card.js). Вставляем в DOM
-initialCards.forEach(function(item) {
-    // Создадим экземпляр карточки
-    const card = new Card(item.name, item.link)
-    const cardElement = card.generateCard()
+// // 3 шаг(Перенес из Card.js). Вставляем в DOM
+// initialCards.forEach(function(item) {
+//     // Создадим экземпляр карточки
+//     const card = new Card(item.name, item.link)
+//     const cardElement = card.generateCard()
 
-    document.querySelector('.elements__list').append(cardElement);
+//     document.querySelector('.elements__list').append(cardElement);
+// })
+
+function createCard(name, link) {
+    const card = new Card(name, link);
+    return card.generateCard();
+}
+
+function renderCard(name, link, container, toEnd) {
+    const card = createCard(name, link);
+    const method = toEnd ? 'append' : 'prepend';
+    container[method](card);
+}
+
+initialCards.forEach((item) => {
+    renderCard(item.name, item.link, container, true);
 })
+
+
 
 // Закрыть карточку по клику на крестик
 closePopupWithImageButton.addEventListener('click', function() {
     closePopup(imagePopup)
-    document.removeEventListener('keydown', closedPopupByPressEsc)
 })
-
-// Закрыть карточку по ESC
-export const closedPopupByPressEsc = function(event) {
-    const popupAny = document.querySelector('.popup_open')
-    if (event.key === 'Escape') { closePopup(popupAny) }
-}
 
 // Закрыть карточку по нажатию на оверлей
 const closeByOverlayClick = (evt) => {
@@ -88,11 +99,7 @@ editFormElement.addEventListener('submit', handleProfileSubmit);
 
 function handleCardFormSubmit(evt) {
     evt.preventDefault()
-    const item = new Card(popupInput.value, link.value)
-    const newTask = item.generateCard()
-    container.prepend(newTask)
-    popupInput.value = ''
-    link.value = ''
+    renderCard(popupInput.value, popupLink.value, container);
     closePopup(popupNew)
 }
 
