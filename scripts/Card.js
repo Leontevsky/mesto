@@ -27,6 +27,7 @@ export class Card {
         this._element = this._getTemplate()
         this._setEventListeners()
         this._element.querySelector('.element__image').src = this._link
+        this._element.querySelector('.element__image').alt = this._text
         this._element.querySelector('.element__title').textContent = this._text
         return this._element
     }
@@ -54,7 +55,6 @@ export class Card {
         imagePopupImg.src = this._link
         imagePopupTitle.alt = this._text
         openPopup(imagePopup)
-        document.addEventListener('keydown', closedPopupByPressEsc)
     }
 }
 
