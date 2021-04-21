@@ -1,6 +1,6 @@
 import {
     initialCards,
-    imagePopup,
+    // imagePopup,
     closePopupWithImageButton,
     popupEdit,
     popupImage,
@@ -24,6 +24,11 @@ import {
 import { Card } from './Card.js';
 import { closePopup, openPopup } from '../scripts/utils.js'
 import { FormValidator } from './FormValidator.js'
+import PopupWithImage from '../components/PopupWithImage.js';
+
+import Popup from '../components/Popup.js' // import Popup - это значит что мы создали константу.
+console.log(Popup)
+
 
 // // 3 шаг(Перенес из Card.js). Вставляем в DOM
 // initialCards.forEach(function(item) {
@@ -33,6 +38,14 @@ import { FormValidator } from './FormValidator.js'
 
 //     document.querySelector('.elements__list').append(cardElement);
 // })
+
+// const imagePopup = new PopupWithImage()
+// const userInfoPopup = new PopupWithForm()
+// const newCardPopup = new PopupWithForm()
+
+const imagePopup = new PopupWithImage('.popup_type_image');
+
+
 
 function createCard(name, link) {
     const card = new Card(name, link);
