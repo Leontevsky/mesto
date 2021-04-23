@@ -11,4 +11,6 @@ export default class PopupWithImage extends Popup {
         imagePopupImg.alt = name
         super.open()
     }
+
+
 }

@@ -44,9 +44,12 @@ import Section from '../components/Section.js'
 const renderCardList = new Section({
     items: initialCards, // массив данных на основе которого надо рисовать карточки
     renderer: function(item) { // функция, которая нужна для отрисовки одной карточки
-        const card = new Card(item.name, item.link, '.template', () => {})
+        const card = new Card(item.name, item.link, '.template', () => {
+            imagePopup.open(item);
+        })
         const cardNew = card.generateCard()
         renderCardList.addItem(cardNew)
+
     }
 }, '.elements__list')
 renderCardList.rendererItems()
@@ -57,6 +60,7 @@ renderCardList.rendererItems()
 //Попап с картинкой
 const imagePopup = new PopupWithImage('.popup_type_image');
 imagePopup.setEventListeners() // ?
+
 
 //Попап редактирования профиля
 const userInfoPopup = new PopupWithForm(
