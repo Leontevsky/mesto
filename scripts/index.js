@@ -21,14 +21,12 @@ import {
     container,
     enableValidation,
 } from '../scripts/constants.js'
-import { Card } from './Card.js';
-import { closePopup, openPopup } from '../scripts/utils.js'
+import Card from './Card.js';
+// import { closePopup, openPopup } from '../scripts/utils.js'
 import { FormValidator } from './FormValidator.js'
-import PopupWithImage from '../components/PopupWithImage.js';
-
-import Popup from '../components/Popup.js' // import Popup - это значит что мы создали константу.
-console.log(Popup)
-
+import PopupWithImage from '../components/PopupWithImage.js'
+import PopupWithForm from '../components/PopupWithForm.js'
+import Section from '../components/Section.js'
 
 // // 3 шаг(Перенес из Card.js). Вставляем в DOM
 // initialCards.forEach(function(item) {
@@ -39,28 +37,72 @@ console.log(Popup)
 //     document.querySelector('.elements__list').append(cardElement);
 // })
 
-// const imagePopup = new PopupWithImage()
-// const userInfoPopup = new PopupWithForm()
-// const newCardPopup = new PopupWithForm()
 
+
+
+
+const renderCardList = new Section({
+    items: initialCards, // массив данных на основе которого надо рисовать карточки
+    renderer: function(item) { // функция, которая нужна для отрисовки одной карточки
+        const card = new Card(item.name, item.link, '.template', () => {})
+        const cardNew = card.generateCard()
+        renderCardList.addItem(cardNew)
+    }
+}, '.elements__list')
+
+
+
+
+//Попап с картинкой
 const imagePopup = new PopupWithImage('.popup_type_image');
+imagePopup.setEventListeners() // ?
 
+//Попап редактирования профиля
+const userInfoPopup = new PopupWithForm(
+    '.popup_type_edit',
+    () => {
+        alert('Test')
+    }
+)
+userInfoPopup.setEventListeners()
 
-
-function createCard(name, link) {
-    const card = new Card(name, link);
-    return card.generateCard();
-}
-
-function renderCard(name, link, container, toEnd) {
-    const card = createCard(name, link);
-    const method = toEnd ? 'append' : 'prepend';
-    container[method](card);
-}
-
-initialCards.forEach((item) => {
-    renderCard(item.name, item.link, container, true);
+showEditFormButton.addEventListener('click', () => {
+    userInfoPopup.open()
 })
+
+// // //Попап создания новой карточки
+// // const newCardPopup = new PopupWithForm('.popup_type_new',
+// //     (values) => {
+// //         const item = { name: values.place, link: values.link }
+// //         const newElement = createCard(item);
+// //         document.querySelector(elements).prepend(newElement)
+// //     }
+
+// )
+// newCardPopup.setEventListeners()
+
+showEditFormButton.addEventListener('click', () => {
+    popupNew.open()
+})
+
+
+
+
+
+// function createCard(name, link) {
+//     const card = new Card(name, link);
+//     return card.generateCard();
+// }
+
+// function renderCard(name, link, container, toEnd) {
+//     const card = createCard(name, link);
+//     const method = toEnd ? 'append' : 'prepend';
+//     container[method](card);
+// }
+
+// initialCards.forEach((item) => {
+//     renderCard(item.name, item.link, container, true);
+// })
 
 
 
