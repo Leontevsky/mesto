@@ -49,6 +49,7 @@ const renderCardList = new Section({
         renderCardList.addItem(cardNew)
     }
 }, '.elements__list')
+renderCardList.rendererItems()
 
 
 
