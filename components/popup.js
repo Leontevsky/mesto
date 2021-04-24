@@ -4,25 +4,25 @@ export default class Popup {
     }
 
     setEventListeners() {
-        this._popup.querySelector('.popup__close').addEventListener('click', () => this._close()) // слушатель на кнопку закрытия
+        this._popup.querySelector('.popup__close').addEventListener('click', () => this.close()) // слушатель на кнопку закрытия
         this._popup.addEventListener('click', (evt) => { // слушатель при нажатии на ESC
-            if (evt.target.classList.contains('popup')) { this._close() }
+            if (evt.target.classList.contains('popup')) { this.close() }
         })
     }
 
-    _open() {
+    open() {
         this._popup.classList.add('popup_open') // открывает попап
-        document.addEventListener('keydown', this._handleEscPress()) // слушатель чтобы закрывать при нажатии на ESC
+        document.addEventListener('keydown', this._handleEscPress) // слушатель чтобы закрывать при нажатии на ESC
     }
 
-    _close() {
+    close() {
         this._popup.classList.remove('popup_open') // закрывает попап
-        document.removeEventListener('keydown', this._handleEscPress()) // снимает слушатель
+        document.removeEventListener('keydown', this._handleEscPress) // снимает слушатель
     }
 
     _handleEscPress(event) {
         event.preventDefault();
-        if (event.key === 'Escape') { this._close() }
+        if (event.key === 'Escape') { this.close() }
     }
 
 }

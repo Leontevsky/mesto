@@ -86,9 +86,9 @@ showEditFormButton.addEventListener('click', () => {
 // )
 // newCardPopup.setEventListeners()
 
-showEditFormButton.addEventListener('click', () => {
-    popupNew.open()
-})
+// showEditFormButton.addEventListener('click', () => {
+//     popupNew.open()
+// })
 
 
 
@@ -113,7 +113,7 @@ showEditFormButton.addEventListener('click', () => {
 
 // Закрыть карточку по клику на крестик
 closePopupWithImageButton.addEventListener('click', function() {
-    closePopup(imagePopup)
+
 })
 
 // Закрыть карточку по нажатию на оверлей
