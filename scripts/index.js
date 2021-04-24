@@ -27,20 +27,14 @@ import { FormValidator } from './FormValidator.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 import Section from '../components/Section.js'
+import UserInfo from '../components/UserInfo.js'
 
-// // 3 шаг(Перенес из Card.js). Вставляем в DOM
-// initialCards.forEach(function(item) {
-//     // Создадим экземпляр карточки
-//     const card = new Card(item.name, item.link)
-//     const cardElement = card.generateCard()
+function createCard(name, link) {
+    const card = new Card(name, link);
+    return card.generateCard();
+}
 
-//     document.querySelector('.elements__list').append(cardElement);
-// })
-
-
-
-
-
+// Рендер
 const renderCardList = new Section({
     items: initialCards, // массив данных на основе которого надо рисовать карточки
     renderer: function(item) { // функция, которая нужна для отрисовки одной карточки
@@ -55,25 +49,52 @@ const renderCardList = new Section({
 renderCardList.rendererItems()
 
 
-
-
 //Попап с картинкой
 const imagePopup = new PopupWithImage('.popup_type_image');
-imagePopup.setEventListeners() // ?
+imagePopup.setEventListeners()
 
+const userInfo = new UserInfo('#name', '#job')
 
 //Попап редактирования профиля
 const userInfoPopup = new PopupWithForm(
     '.popup_type_edit',
-    () => {
-        alert('Test')
+    (values) => {
+        const item = { name: values.name, job: values.job };
+        userInfo.setUserInfo(values)
+        userInfoPopup.close()
     }
 )
 userInfoPopup.setEventListeners()
 
 showEditFormButton.addEventListener('click', () => {
+    const allInfo = userInfo.getUserInfo();
+    nameInput.value = allInfo.name;
+    jobInput.value = allInfo.job;
     userInfoPopup.open()
 })
+
+
+//Попап создания новой карточки
+const newCardPopup = new PopupWithForm('.popup_type_new',
+    (values) => {
+        const item = { name: values.place, link: values.link }
+        const newElement = createCard(item)
+        newElement.addItem()
+        newElement.setUserInfo()
+        newCardPopup.close()
+    }
+)
+newCardPopup.setEventListeners()
+
+showCreateFormButton.addEventListener('click', () => {
+    newCardPopup.open()
+})
+
+const editFormValidator = new FormValidator(enableValidation, editFormPopup);
+const cardFormValidator = new FormValidator(enableValidation, popupNew);
+
+editFormValidator.enableValidation();
+cardFormValidator.enableValidation();
 
 // // //Попап создания новой карточки
 // // const newCardPopup = new PopupWithForm('.popup_type_new',
@@ -89,10 +110,6 @@ showEditFormButton.addEventListener('click', () => {
 // showEditFormButton.addEventListener('click', () => {
 //     popupNew.open()
 // })
-
-
-
-
 
 // function createCard(name, link) {
 //     const card = new Card(name, link);
@@ -111,62 +128,56 @@ showEditFormButton.addEventListener('click', () => {
 
 
 
-// Закрыть карточку по клику на крестик
-closePopupWithImageButton.addEventListener('click', function() {
+// // Закрыть карточку по клику на крестик
+// closePopupWithImageButton.addEventListener('click', function() {
 
-})
+// })
 
-// Закрыть карточку по нажатию на оверлей
-const closeByOverlayClick = (evt) => {
-    if (evt.target.classList.contains('popup')) { closePopup(evt.target) }
-}
+// // Закрыть карточку по нажатию на оверлей
+// const closeByOverlayClick = (evt) => {
+//     if (evt.target.classList.contains('popup')) { closePopup(evt.target) }
+// }
 
-popupEdit.addEventListener('click', closeByOverlayClick)
-popupImage.addEventListener('click', closeByOverlayClick)
-popupCreate.addEventListener('click', closeByOverlayClick)
+// popupEdit.addEventListener('click', closeByOverlayClick)
+// popupImage.addEventListener('click', closeByOverlayClick)
+// popupCreate.addEventListener('click', closeByOverlayClick)
 
 
-showEditFormButton.addEventListener('click', function() {
-    openPopup(editFormPopup)
-    nameInput.value = nameUserInput.textContent;
-    jobInput.value = jobUserInput.textContent;
-    editFormValidator.activeFormButton()
-})
+// showEditFormButton.addEventListener('click', function() {
+//     openPopup(editFormPopup)
+//     nameInput.value = nameUserInput.textContent;
+//     jobInput.value = jobUserInput.textContent;
+//     editFormValidator.activeFormButton()
+// })
 
-closeEditFormButton.addEventListener('click', function() {
-    closePopup(editFormPopup)
-})
+// closeEditFormButton.addEventListener('click', function() {
+//     closePopup(editFormPopup)
+// })
 
-showCreateFormButton.addEventListener('click', function() {
-    openPopup(popupNew)
-    cardFormValidator.inActiveFormButton()
-})
+// showCreateFormButton.addEventListener('click', function() {
+//     openPopup(popupNew)
+//     cardFormValidator.inActiveFormButton()
+// })
 
-closeCreateFormButton.addEventListener('click', function() {
-    closePopup(popupNew)
-})
+// closeCreateFormButton.addEventListener('click', function() {
+//     closePopup(popupNew)
+// })
 
-const editFormElement = document.querySelector('#popup-form');
+// const editFormElement = document.querySelector('#popup-form');
 
-function handleProfileSubmit(evt) {
-    evt.preventDefault();
-    nameUserInput.textContent = nameInput.value;
-    jobUserInput.textContent = jobInput.value;
-    closePopup(editFormPopup);
-}
+// function handleProfileSubmit(evt) {
+//     evt.preventDefault();
+//     nameUserInput.textContent = nameInput.value;
+//     jobUserInput.textContent = jobInput.value;
+//     closePopup(editFormPopup);
+// }
 
-editFormElement.addEventListener('submit', handleProfileSubmit);
+// editFormElement.addEventListener('submit', handleProfileSubmit);
 
-function handleCardFormSubmit(evt) {
-    evt.preventDefault()
-    renderCard(popupInput.value, popupLink.value, container);
-    closePopup(popupNew)
-}
+// function handleCardFormSubmit(evt) {
+//     evt.preventDefault()
+//     renderCard(popupInput.value, popupLink.value, container);
+//     closePopup(popupNew)
+// }
 
-cardFormElement.addEventListener('submit', handleCardFormSubmit)
-
-const editFormValidator = new FormValidator(enableValidation, editFormPopup);
-const cardFormValidator = new FormValidator(enableValidation, popupNew);
-
-editFormValidator.enableValidation();
-cardFormValidator.enableValidation();
+// cardFormElement.addEventListener('submit', handleCardFormSubmit)

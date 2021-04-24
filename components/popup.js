@@ -1,11 +1,12 @@
 export default class Popup {
     constructor(popupSelector) { // Что такое popupSelector - это селектор. Строка string
         this._popup = document.querySelector(popupSelector);
+        this._handleEscPress = this._handleEscPress.bind(this)
     }
 
     setEventListeners() {
         this._popup.querySelector('.popup__close').addEventListener('click', () => this.close()) // слушатель на кнопку закрытия
-        this._popup.addEventListener('click', (evt) => { // слушатель при нажатии на ESC
+        this._popup.addEventListener('click', (evt) => { // слушатель при нажатии на оверлай 
             if (evt.target.classList.contains('popup')) { this.close() }
         })
     }

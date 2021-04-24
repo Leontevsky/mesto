@@ -5,8 +5,9 @@ export default class Section {
         this._containerSelector = document.querySelector(containerSelector)
     }
 
-    addItem(arg) {
-        this._containerSelector.append(arg);
+    addItem(element, toEnd) {
+        const method = toEnd ? 'append' : 'prepend';
+        this._containerSelector[method](element);
     }
 
     rendererItems() {
