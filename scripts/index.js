@@ -60,19 +60,11 @@ const userInfoPopup = new PopupWithForm(
     '.popup_type_edit',
     (values) => {
         const item = { name: values.name, job: values.job };
-        userInfo.setUserInfo(values)
+        userInfo.setUserInfo(item.name, item.job)
         userInfoPopup.close()
     }
 )
 userInfoPopup.setEventListeners()
-
-showEditFormButton.addEventListener('click', () => {
-    const allInfo = userInfo.getUserInfo();
-    nameInput.value = allInfo.name;
-    jobInput.value = allInfo.job;
-    userInfoPopup.open()
-})
-
 
 //Попап создания новой карточки
 const newCardPopup = new PopupWithForm('.popup_type_new',
@@ -84,6 +76,17 @@ const newCardPopup = new PopupWithForm('.popup_type_new',
         newCardPopup.close()
     }
 )
+
+showEditFormButton.addEventListener('click', () => {
+    const allInfo = userInfo.getUserInfo();
+    nameInput.value = allInfo.name;
+    jobInput.value = allInfo.job;
+    userInfoPopup.open()
+})
+
+
+
+
 newCardPopup.setEventListeners()
 
 showCreateFormButton.addEventListener('click', () => {

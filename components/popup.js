@@ -22,7 +22,6 @@ export default class Popup {
     }
 
     _handleEscPress(event) {
-        event.preventDefault();
         if (event.key === 'Escape') { this.close() }
     }
 

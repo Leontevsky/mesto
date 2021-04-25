@@ -10,23 +10,24 @@ export default class PopupWithForm extends Popup {
 
 
     _getInputValues() {
-        this._newValues = {};
-        this._inputItems.forEach(inputElement => {
-            this._newValues.link = inputElement.value
-        })
-        return this._formValues
+        this._newValues = {}
+        this._inputItems.forEach(inputElement => { this._newValues[inputElement.name] = inputElement.value })
+        return this._newValues
+
     }
+
 
     setEventListeners() {
-        super.setEventListeners(); // из класса Popup
+
         this._popup.addEventListener('submit', (event) => {
             event.preventDefault()
-            this._handleFormSubmit(this._getInputValues());
-            this.close(); // скорее всего неправильно
+            this._submitForm(this._getInputValues());
+            // this.close(); //
         })
+        super.setEventListeners()
     }
 
-    close() {}
-
-
+    close() {
+        super.close();
+    }
 }
