@@ -1,29 +1,15 @@
 import {
     initialCards,
-    // imagePopup,
-    closePopupWithImageButton,
-    popupEdit,
-    popupImage,
-    popupCreate,
     showEditFormButton,
     editFormPopup,
     popupNew,
-    closeEditFormButton,
     showCreateFormButton,
-    closeCreateFormButton,
     nameInput,
     jobInput,
-    nameUserInput,
-    jobUserInput,
-    cardFormElement,
-    popupInput,
-    popupLink,
-    container,
     enableValidation,
     templateElement,
 } from '../scripts/constants.js'
 import Card from './Card.js';
-// import { closePopup, openPopup } from '../scripts/utils.js'
 import { FormValidator } from './FormValidator.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
@@ -48,7 +34,6 @@ const renderCardList = new Section({
     }
 }, '.elements__list')
 renderCardList.rendererItems()
-
 
 //Попап с картинкой
 const imagePopup = new PopupWithImage('.popup_type_image');
