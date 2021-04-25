@@ -53,6 +53,7 @@ export const cardFormElement = document.querySelector('.popup__form_add')
 export const popupInput = cardFormElement.querySelector('#placeName')
 export const popupLink = cardFormElement.querySelector('#link')
 export const container = document.querySelector('.elements__list')
+export const templateElement = document.querySelector('.template');
 
 export const enableValidation = {
     formSelector: '.popup__form',
