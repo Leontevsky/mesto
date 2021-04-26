@@ -11,22 +11,31 @@ module.exports = {
     },
     module: {
         rules: [{
-            test: /\.css$/i,
-            use: [MiniCssExtractPlugin.loader, {
-                    loader: 'css-loader',
-                    options: {
-                        importLoaders: 1,
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                }
+            },
+            {
+
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                        },
                     },
-                },
-                'postcss-loader'
-            ],
-        }, {
-            test: /\.(png|jpe?g|gif|svg|woff2)$/i,
-            use: [{
-                loader: 'file-loader',
-                options: { esModule: false }
-            }, ],
-        }, ],
+                    'postcss-loader'
+                ],
+            }, {
+                test: /\.(png|jpe?g|gif|svg|woff|woff2)$/i,
+                use: [{
+                    loader: 'file-loader',
+                    options: { esModule: false }
+                }, ],
+            },
+        ],
     },
 
     plugins: [
