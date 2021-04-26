@@ -14,11 +14,6 @@ export default class PopupWithForm extends Popup {
         return this._newValues
     }
 
-    removeInputValue() {
-        const valueInput = this._popupForm.querySelectorAll(".popup__input")
-        valueInput.forEach((element) => { element.value = "" })
-    }
-
     setEventListeners() {
         this._popup.addEventListener('submit', (event) => {
             event.preventDefault()
@@ -29,6 +24,6 @@ export default class PopupWithForm extends Popup {
 
     close() {
         super.close();
-        this.removeInputValue();
+        this._popupForm.reset()
     }
 }

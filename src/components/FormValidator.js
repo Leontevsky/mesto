@@ -1,12 +1,17 @@
-export class FormValidator {
+export default class FormValidator {
     constructor(config, formElement) {
         this._inputSelector = config.inputSelector
         this._submitButtonSelector = config.submitButtonSelector
         this._inactiveButtonClass = config.inactiveButtonClass
         this._inputErrorClass = config.inputErrorClass
         this._errorClass = config.errorClass
-
         this._element = formElement
+    }
+
+    blockSubmitButton() {
+        this._buttonElement = this._element.querySelector('.popup__button')
+        this._buttonElement.classList.add(this._inactiveButtonClass)
+        this._buttonElement.disabled = true
     }
 
     _allInputsEmpty = () => {
@@ -81,5 +86,3 @@ export class FormValidator {
     }
 
 }
-
-export default FormValidator

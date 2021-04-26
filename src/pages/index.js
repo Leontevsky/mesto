@@ -9,8 +9,8 @@ import {
     enableValidation,
     templateElement,
 } from '../scripts/constants.js'
-import Card from './Card.js';
-import { FormValidator } from './FormValidator.js'
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 import Section from '../components/Section.js'
@@ -26,9 +26,7 @@ function createCard(name, link, cardElement) {
 const renderCardList = new Section({
     items: initialCards, // массив данных на основе которого надо рисовать карточки
     renderer: function(item) { // функция, которая нужна для отрисовки одной карточки
-        const card = createCard(item.name, item.link, '.template', () => {
-            imagePopup.open(item);
-        })
+        const card = createCard(item.name, item.link, '.template')
         const cardNew = card.generateCard()
         renderCardList.addItem(cardNew)
 
@@ -61,17 +59,20 @@ const newCardPopup = new PopupWithForm('.popup_type_new',
     (values) => {
         console.log(values)
         const item = { name: values.place, link: values.link }
-        const newElement = createCard(item.name, item.link, templateElement)
+        const newElement = createCard(item.name, item.link, '.template')
         const newCard = newElement.generateCard()
         renderCardList.addItem(newCard)
         newCardPopup.close()
+        editFormValidator.blockSubmitButton()
+        cardFormValidator.blockSubmitButton()
     }
 )
 
 newCardPopup.setEventListeners()
 
 showCreateFormButton.addEventListener('click', () => {
-    newCardPopup.open();
+
+    newCardPopup.open()
 });
 
 showEditFormButton.addEventListener('click', () => {
@@ -79,10 +80,6 @@ showEditFormButton.addEventListener('click', () => {
     nameInput.value = allInfo.name;
     jobInput.value = allInfo.job;
     userInfoPopup.open()
-})
-
-showCreateFormButton.addEventListener('click', () => {
-    newCardPopup.open()
 })
 
 const editFormValidator = new FormValidator(enableValidation, editFormPopup);

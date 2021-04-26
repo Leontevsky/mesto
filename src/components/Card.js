@@ -2,17 +2,19 @@ export default class Card {
     constructor(name, link, cardSelector, handleCardClick) {
         this._text = name
         this._link = link
-        this._cardSelector = cardSelector
         this._handleCardClick = handleCardClick
+
+        this._cardSelector = cardSelector
     }
 
     // 1 шаг. Получаем готовую разметку перед размещением на страницу
     _getTemplate() {
         const cardElement = document
-            .querySelector('.template')
+            .querySelector(this._cardSelector)
             .content
             .querySelector('.element')
             .cloneNode(true)
+        console.log(this._cardSelector)
         return cardElement;
 
     }
