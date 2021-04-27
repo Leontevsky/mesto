@@ -63,7 +63,6 @@ const newCardPopup = new PopupWithForm('.popup_type_new',
         const newCard = newElement.generateCard()
         renderCardList.addItem(newCard)
         newCardPopup.close()
-        editFormValidator.blockSubmitButton()
         cardFormValidator.blockSubmitButton()
     }
 )
