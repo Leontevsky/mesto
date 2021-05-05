@@ -16,6 +16,23 @@ import PopupWithForm from '../components/PopupWithForm.js'
 import Section from '../components/Section.js'
 import UserInfo from '../components/UserInfo.js'
 import '../pages/index.css';
+import Api from '../components/Api.js'
+
+// Работа с Api
+const api = new Api({
+    url: 'https://mesto.nomoreparties.co/v1/cohort-23',
+    headers: {
+        authorization: '8fd048ee-3b24-45d4-be6a-270aec1f1baf',
+        "Content-Type": "application/json"
+    }
+})
+
+// Работа с Api. Забрать карточки с сервака
+api.getAllCards()
+    .then((element) => {
+        renderCardList.rendererItems(element)
+    })
+
 
 function createCard(name, link, cardElement) {
     const card = new Card(name, link, cardElement, () => { imagePopup.open({ name, link }) });
