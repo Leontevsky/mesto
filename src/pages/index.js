@@ -33,7 +33,7 @@ api.getAllCards()
         renderCardList.rendererItems(element)
     })
 
-
+// Sozdat cartochku
 function createCard(name, link, cardElement) {
     const card = new Card(name, link, cardElement, () => { imagePopup.open({ name, link }) });
     return card
@@ -49,7 +49,7 @@ const renderCardList = new Section({
 
     }
 }, '.elements__list')
-renderCardList.rendererItems()
+
 
 //Попап с картинкой
 const imagePopup = new PopupWithImage('.popup_type_image');

@@ -9,6 +9,7 @@ export default class Api {
         return fetch(`${this._url}/cards`, { headers: this._headers })
             .then(res => this._checkRequestResult(res))
             .catch(err => this._errorRequestResult(err))
+
     }
 
     _checkRequestResult(res) {
