@@ -1,10 +1,11 @@
 export default class Card {
-    constructor(name, link, cardSelector, handleCardClick) {
+    constructor(name, link, cardSelector, id, handleCardClick) {
         this._text = name
         this._link = link
         this._handleCardClick = handleCardClick
-
         this._cardSelector = cardSelector
+        this._id = id
+
     }
 
     // 1 шаг. Получаем готовую разметку перед размещением на страницу

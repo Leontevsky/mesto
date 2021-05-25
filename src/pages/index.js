@@ -17,18 +17,19 @@ import Section from '../components/Section.js'
 import UserInfo from '../components/UserInfo.js'
 import '../pages/index.css';
 import Api from '../components/Api.js'
+let userId;
 
 // Работа с Api
 const api = new Api({
-    url: 'https://mesto.nomoreparties.co/v1/cohort-23',
+    url: 'https://mesto.nomoreparties.co/v1/cohort-24',
     headers: {
-        authorization: '8fd048ee-3b24-45d4-be6a-270aec1f1baf',
+        authorization: 'eee6724a-7558-44e3-b80b-1f5173ed3e41',
         "Content-Type": "application/json"
     }
 })
 
 // Работа с Api. Забрать карточки с сервака
-api.getAllCards()
+api.getInitialCards()
     .then((element) => {
         renderCardList.rendererItems(element)
     })
@@ -39,14 +40,13 @@ function createCard(name, link, cardElement) {
     return card
 }
 
-// Рендер
+// Рендер карточек 
 const renderCardList = new Section({
-    items: initialCards, // массив данных на основе которого надо рисовать карточки
+    // items: initialCards, // массив данных на основе которого надо рисовать карточки
     renderer: function(item) { // функция, которая нужна для отрисовки одной карточки
         const card = createCard(item.name, item.link, '.template')
         const cardNew = card.generateCard()
-        renderCardList.addItem(cardNew)
-
+        renderCardList.addItem(cardNew, true);
     }
 }, '.elements__list')
 

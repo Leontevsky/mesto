@@ -5,10 +5,13 @@ export default class Api {
         this._headers = this._config.headers
     }
 
-    getAllCards() {
-        return fetch(`${this._url}/cards`, { headers: this._headers })
+    getInitialCards() {
+        return fetch(`${this._url}/cards`, {
+                method: "GET",
+                headers: this._headers
+            })
             .then(res => this._checkRequestResult(res))
-            .catch(err => this._errorRequestResult(err))
+            //.catch(err => this._errorRequestResult(err))
 
     }
 
