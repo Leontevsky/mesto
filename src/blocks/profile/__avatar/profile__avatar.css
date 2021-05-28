@@ -3,7 +3,7 @@
     max-width: 120px;
     border-radius: 50%;
     margin-right: 24.375px;
-    position: relative;
+    /* position: relative; */
 }
 
 .profile__avatar:hover {
@@ -15,7 +15,7 @@
     transition: 0.4s;
 }
 
-.profile__avatar:hover .profile__avatar-replace {
+.profile__avatar:hover .profile__change {
     display: block;
 }
 

@@ -32,6 +32,8 @@ export const nameInput = document.querySelector('#name')
 export const jobInput = document.querySelector('#job')
 export const templateElement = document.querySelector('.template')
 
+export const popupUserPicSelector = ".popup_update";
+
 export const enableValidation = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',

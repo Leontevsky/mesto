@@ -8,6 +8,7 @@ import {
     jobInput,
     enableValidation,
     templateElement,
+    popupUserPicSelector,
 } from '../scripts/constants.js'
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js'

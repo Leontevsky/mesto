@@ -13,15 +13,10 @@
         <header class="header">
             <img src="<%=require( './images/Vector.svg')%>" alt="Лого" class="header__logo">
         </header>
-
-
-
-
-
         <main class="content">
             <section class="profile">
                 <img class="profile__avatar" src="<%=require( './images/oldman.jpg')%>" alt="Фото">
-                <img class="profile__avatar-replace" src="<%=require( './images/profile-avatar-edit.svg')%>" alt="Смена фото">
+                <button type="button" class="profile__change" aria-label="Изменить аватар"></button>
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button type="button" class="profile__select-button" id="show-popup"></button>
@@ -66,13 +61,26 @@
             </div>
         </div>
 
-        <div class="popup popup_type_image">
-            <div class="popup__content popup__content_image">
-                <button type="button" class="popup__close" id='popup-image-button'></button>
-                <img src="#" alt="Картинка" class="popup__img">
-                <p class="popup__caption"></p>
+        <section class="popup popup_update">
+            <div class="popup__content">
+                <button type="button" class="popup__close" aria-label="Закрыть"></button>
+                <h3 class="popup__title">Обновить аватар</h3>
+                <form class="popup__form popup__form_avatar" name="form" id="popupFormAvatar">
+                    <fieldset class="popup__fieldset">
+                        <input class="popup__input popup__input_edit" id="newAvatar" name="link-avatar" type="url" value="" placeholder="Ссылка на новый аватар" required>
+                        <span class="popup__error" id="newAvatar-error"></span>
+                    </fieldset>
+                    <button type="submit" class="popup__save">Сохранить</button>
+                </form>
             </div>
-        </div>
+
+            <div class="popup popup_type_image">
+                <div class="popup__content popup__content_image">
+                    <button type="button" class="popup__close" id='popup-image-button'></button>
+                    <img src="#" alt="Картинка" class="popup__img">
+                    <p class="popup__caption"></p>
+                </div>
+            </div>
 
     </div>
 

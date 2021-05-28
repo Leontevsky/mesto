@@ -42,3 +42,7 @@
 @import url(../blocks/popup/__img/popup__img.css);
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__error/_visible/popup__error_visible.css);
+@import url(../blocks/profile/__change/profile__change.css);
+@import url(../blocks/popup/__fieldset/popup__fieldset.css);
+@import url(../blocks/popup/__save/popup__save.css);
+@import url(../blocks/profile/__container/profile__container.css);
