@@ -5,22 +5,3 @@
     margin-right: 24.375px;
     /* position: relative; */
 }
-
-.profile__avatar:hover {
-    cursor: pointer;
-}
-
-.profile__avatar:hover {
-    opacity: 0.3;
-    transition: 0.4s;
-}
-
-.profile__avatar:hover .profile__change {
-    display: block;
-}
-
-@media screen and (max-width: 520px) {
-    .profile__avatar {
-        margin-right: 0;
-    }
-}

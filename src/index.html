@@ -15,8 +15,10 @@
         </header>
         <main class="content">
             <section class="profile">
-                <img class="profile__avatar" src="<%=require( './images/oldman.jpg')%>" alt="Фото">
-                <button type="button" class="profile__change" aria-label="Изменить аватар"></button>
+                <div class="profile__container">
+                    <img class="profile__avatar" src="<%=require( './images/oldman.jpg')%>" alt="Фото">
+                    <button type="button" class="profile__change" aria-label="Изменить аватар"></button>
+                </div>
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button type="button" class="profile__select-button" id="show-popup"></button>
@@ -61,7 +63,7 @@
             </div>
         </div>
 
-        <section class="popup popup_update">
+        <div class="popup popup_update">
             <div class="popup__content">
                 <button type="button" class="popup__close" aria-label="Закрыть"></button>
                 <h3 class="popup__title">Обновить аватар</h3>
@@ -73,18 +75,17 @@
                     <button type="submit" class="popup__save">Сохранить</button>
                 </form>
             </div>
+        </div>
 
-            <div class="popup popup_type_image">
-                <div class="popup__content popup__content_image">
-                    <button type="button" class="popup__close" id='popup-image-button'></button>
-                    <img src="#" alt="Картинка" class="popup__img">
-                    <p class="popup__caption"></p>
-                </div>
+        <div class="popup popup_type_image">
+            <div class="popup__content popup__content_image">
+                <button type="button" class="popup__close" id='popup-image-button'></button>
+                <img src="#" alt="Картинка" class="popup__img">
+                <p class="popup__caption"></p>
             </div>
+        </div>
 
-    </div>
-
-    <template class="template" id="template">
+        <template class="template" id="template">
         <li class="element">
             <img src="#" alt="Фото" class="element__image">
             <div class="element__caption">
