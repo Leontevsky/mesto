@@ -17,7 +17,7 @@
             <section class="profile">
                 <div class="profile__container">
                     <img class="profile__avatar" src="<%=require( './images/oldman.jpg')%>" alt="Фото">
-                    <button type="button" class="profile__change" aria-label="Изменить аватар"></button>
+                    <button type="button" class="profile__change" id='show-popup-avatar' aria-label="Изменить аватар"></button>
                 </div>
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <div class="popup popup_update">
+        <div class="popup popup_type_update">
             <div class="popup__content">
                 <button type="button" class="popup__close" aria-label="Закрыть"></button>
                 <h3 class="popup__title">Обновить аватар</h3>
@@ -85,7 +85,7 @@
             </div>
         </div>
 
-        <div class="popup popup_delete">
+        <div class="popup popup_type_delete">
             <div class="popup__content">
                 <form class="popup__form popup__form_delete" name="form" id="popupFormDelete">
                     <button type="button" class="popup__close" aria-label="Закрыть"></button>
