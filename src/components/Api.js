@@ -5,24 +5,45 @@ export default class Api {
         this._headers = this._config.headers
     }
 
+    // получить список всех карточек в виде массива (GET)
     getInitialCards() {
         return fetch(`${this._url}/cards`, {
-                method: "GET",
-                headers: this._headers
-            })
-            .then(res => this._checkRequestResult(res))
-            //.catch(err => this._errorRequestResult(err))
-
+            method: "GET",
+            headers: this._headers
+        }).then((res) => {
+            return res.ok ? res.json() : Promise.reject(`Ошибка! ${res.status}`)
+        });
+        //.catch(err => this._errorRequestResult(err))
     }
 
-    _checkRequestResult(res) {
-        if (res.ok) {
-            return res.json()
-        }
-        return Promise.reject(`Ошибка ${res.status}`)
+    getUserInfo() {
+        return fetch(`${this._url}/users/me`, {
+            method: "GET",
+            headers: this._headers,
+        }).then((res) => {
+            return res.ok ? res.json() : Promise.reject(`Ошибка! ${res.status}`);
+        });
     }
 
-    _errorRequestResult(err) {
-        console.log(err)
-    }
+
+
+
+
+
+
+
+
+    // _checkRequestResult(res) {
+    //     if (res.ok) {
+    //         return res.json()
+    //     }
+    //     return Promise.reject(`Ошибка ${res.status}`)
+    // }
+
+    // _errorRequestResult(err) {
+    //     console.log(err)
+    // }
+
+
+
 }
