@@ -33,11 +33,9 @@ export default class Card {
     _setEventListeners() {
         //Слушатель кнопки лайка
         this._element.querySelector('.element__button').addEventListener('click', () => { this._handleLikeIcon() })
-
-        //Слушатель удаления карточки
+            //Слушатель удаления карточки
         this._element.querySelector('.element__button_delete').addEventListener('click', () => { this._handleDeleteButton() })
-
-        //Слушатель открытия карточки
+            //Слушатель открытия карточки
         this._element.querySelector('.element__image').addEventListener('click', () => { this._handleCardClick() })
     }
 
