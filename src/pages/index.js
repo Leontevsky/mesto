@@ -41,7 +41,7 @@ api.getInitialCards().then((element) => {
 // Sozdat cartochku (сюда везде добавил айди, по анологии с конструктором класса кард!!!!!)
 function createCard(name, link, id, cardElement) {
     const card = new Card(name, link, id, cardElement, () => {
-        imagePopup.open({ name, link });
+        imagePopup.open(name, link);
     });
     return card;
 }
@@ -69,7 +69,7 @@ const userInfo = new UserInfo(".profile__title", ".profile__subtitle");
 const userInfoPopup = new PopupWithForm(".popup_type_edit", (values) => {
     console.log(values);
     const item = { name: values.name, job: values.job };
-    userInfo.setUserInfo(item.name, item.job);
+    userInfo.setUserInfo(item.name, item.about);
 
     userInfoPopup.close();
 });
@@ -111,7 +111,7 @@ showUserAvatarButton.addEventListener("click", () => {
 showEditFormButton.addEventListener("click", () => {
     const allInfo = userInfo.getUserInfo();
     nameInput.value = allInfo.name;
-    jobInput.value = allInfo.job;
+    jobInput.value = allInfo.about;
     userInfoPopup.open();
 });
 
