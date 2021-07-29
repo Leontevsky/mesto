@@ -2,8 +2,12 @@ export default class Card {
     constructor(name, link, cardSelector, id, handleCardClick) {
         this._text = name
         this._link = link
-        this._handleCardClick = handleCardClick
         this._cardSelector = cardSelector
+
+        this._handleCardClick = handleCardClick
+            // this._handleCardLike = handleCardLike;
+            // this._handleCardDelete = handleCardDelete;
+
         this._id = id
 
     }
@@ -44,5 +48,7 @@ export default class Card {
 
     // функция удаления карточки
     _handleDeleteButton() { this._element.remove() }
+
+
 
 }
