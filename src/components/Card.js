@@ -35,7 +35,7 @@ export default class Card {
         this._element.querySelector('.element__title').textContent = this._text
 
         if (this._ownerId !== this._userId) { // новое
-            this._bin.remove(); // новое
+            this._element.querySelector('.element__button_delete').remove(); // новое
         } // новое
 
         this._setEventListeners()
@@ -69,7 +69,7 @@ export default class Card {
     }
 
     rendererLikes() {
-        this._likeCounter.textContent = this._likeCard.length;
+        this._element.querySelector('element__button_count').textContent = this._likeCard.length;
         this.changeLikes(this._userId);
     }
 
@@ -86,7 +86,7 @@ export default class Card {
     }
 
     removeCard() {
-        this._bin.closest(".element").remove();
+        this._element.querySelector('.element__button_delete').closest(".element").remove();
     }
 
 }

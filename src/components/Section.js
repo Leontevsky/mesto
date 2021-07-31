@@ -10,7 +10,7 @@ export default class Section {
         this._container[method](element);
     }
 
-    rendererItems(arg) {
+    renderItems(arg) {
         arg.forEach((item) => {
             this._renderer(item)
         });

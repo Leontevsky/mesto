@@ -80,9 +80,6 @@ function createCard(item, userId, templateElement) {
 }
 
 
-
-
-
 // Рендер карточек
 const cardList = new Section({
         // items: initialCards, // массив данных на основе которого надо рисовать карточки
@@ -208,7 +205,7 @@ showEditFormButton.addEventListener("click", () => {
 
 
 showUserPicPopup.addEventListener("click", () => {
-    newAvatarPopup.open();
+    userPicPopup.open();
 });
 
 
