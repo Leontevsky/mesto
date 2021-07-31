@@ -45,10 +45,15 @@ export default class Card {
 
     _setEventListeners() {
         //Слушатель кнопки лайка
-        this._element.querySelector('.element__button').addEventListener('click', () => { this._handleLikeIcon() })
-            //Слушатель удаления карточки
-        this._element.querySelector('.element__button_delete').addEventListener('click', () => { this._handleDeleteButton() })
-            //Слушатель открытия карточки
+        this._element.querySelector('.element__button').addEventListener('click', () => { this._handleCardLike() })
+
+
+        // //Слушатель удаления карточки
+        if (this._ownerId === this._userId) {
+            this._element.querySelector('.element__button_delete').addEventListener('click', () => { this._handleDeleteButton() })
+        }
+
+        //Слушатель открытия карточки
         this._element.querySelector('.element__image').addEventListener('click', () => { this._handleCardClick() })
     }
 
@@ -69,15 +74,15 @@ export default class Card {
     }
 
     rendererLikes() {
-        this._element.querySelector('element__button_count').textContent = this._likeCard.length;
+        this._element.querySelector('.element__button_count').textContent = this._likeCard.length;
         this.changeLikes(this._userId);
     }
 
     changeLikes() {
         if (this.isLiked(this._userId)) {
-            this._like.classList.add("element__button_theme-dark");
+            this._element.querySelector('.element__button').classList.add("element__button_theme-dark");
         } else {
-            this._like.classList.remove("element__button_theme-dark");
+            this._element.querySelector('.element__button').classList.remove("element__button_theme-dark");
         }
     }
 
