@@ -48,3 +48,4 @@
 @import url(../blocks/profile/__container/profile__container.css);
 @import url(../blocks/popup/__title/_delete/popup__title_delete.css);
 @import url(../blocks/popup/__save/_disabled/popup__save_disabled.css);
+@import url(../blocks/element/__actions/element__actions.css);

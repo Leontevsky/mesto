@@ -60,8 +60,8 @@ export default class Card {
     // // функция добавления лайка
     // _handleLikeIcon() { this._element.querySelector('.element__button').classList.toggle('element__button_theme-dark') }
 
-    // // функция удаления карточки
-    // _handleDeleteButton() { this._element.remove() }
+    // функция удаления карточки
+    _handleDeleteButton() { this._element.remove() }
 
     getId() {
         return this._id;

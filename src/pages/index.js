@@ -121,6 +121,7 @@ userInfoPopup.setEventListeners();
 
 //Попап создания новой карточки
 const newCardPopup = new PopupWithForm(".popup_type_new", (values) => {
+    console.log(values)
     newCardPopup.rendererLoading(true);
     api
         .addCard(values.name, values.link)
