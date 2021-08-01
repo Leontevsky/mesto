@@ -72,13 +72,12 @@ function createCard(item, userId, templateElement) {
             },
             handleCardDelete: () => {
                 deleteCardPopup.open(card);
-            },
+            }, // Удаление карточки после отработки Апи. Строка 168, вызвал апи, удалил карточку закрыл попап. Если интернет-соединения нет, то запрос не оправляется, карточка не лайкается и не удаляется. Все же верно.
         },
         item._id
     );
     return card;
 }
-
 
 // Рендер карточек
 const cardList = new Section({
@@ -118,7 +117,6 @@ const userInfoPopup = new PopupWithForm(".popup_type_edit", (values) => {
 });
 userInfoPopup.setEventListeners();
 
-
 //Попап создания новой карточки
 const newCardPopup = new PopupWithForm(".popup_type_new", (values) => {
     console.log(values)
@@ -141,9 +139,7 @@ const newCardPopup = new PopupWithForm(".popup_type_new", (values) => {
 
 newCardPopup.setEventListeners();
 
-
-
-//попап обновления аватара!!!!!!
+//Попап обновления аватара
 const userPicPopup = new PopupWithForm(".popup_type_update", (values) => {
     userPicPopup.rendererLoading(true);
     api
@@ -161,9 +157,7 @@ const userPicPopup = new PopupWithForm(".popup_type_update", (values) => {
 });
 userPicPopup.setEventListeners();
 
-
-
-//попап обновления инфы!!!!!! написать класс попапсабмит это набросок на будущее
+//Попап обновления инфы
 const deleteCardPopup = new PopupWithSubmit(popupDeleteCardSelector, (card) => {
     api
         .deleteCard(card.getId())
@@ -190,9 +184,6 @@ api
         console.log(data);
     });
 
-
-
-
 showCreateFormButton.addEventListener("click", () => {
     newCardPopup.open();
 });
@@ -204,15 +195,9 @@ showEditFormButton.addEventListener("click", () => {
     userInfoPopup.open();
 });
 
-
 showUserPicPopup.addEventListener("click", () => {
     userPicPopup.open();
 });
-
-
-
-
-
 
 const editFormValidator = new FormValidator(enableValidation, editFormPopup);
 const cardFormValidator = new FormValidator(enableValidation, popupNew);
