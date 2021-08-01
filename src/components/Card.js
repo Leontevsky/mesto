@@ -21,7 +21,6 @@ export default class Card {
             .content
             .querySelector('.element')
             .cloneNode(true)
-        console.log(this._cardSelector)
         return cardElement;
 
     }
@@ -50,7 +49,7 @@ export default class Card {
 
         // //Слушатель удаления карточки
         if (this._ownerId === this._userId) {
-            this._element.querySelector('.element__button_delete').addEventListener('click', () => { this._handleDeleteButton() })
+            this._element.querySelector('.element__button_delete').addEventListener('click', () => { this._handleCardDelete() })
         }
 
         //Слушатель открытия карточки

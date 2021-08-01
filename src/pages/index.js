@@ -164,7 +164,7 @@ userPicPopup.setEventListeners();
 
 
 //попап обновления инфы!!!!!! написать класс попапсабмит это набросок на будущее
-const deleteCardPopup = new PopupWithSubmit(".popup_type_delete", (card) => {
+const deleteCardPopup = new PopupWithSubmit(popupDeleteCardSelector, (card) => {
     api
         .deleteCard(card.getId())
         .then(() => {
