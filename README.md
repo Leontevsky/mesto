@@ -23,5 +23,5 @@
 - webpack;
 
 ## Настройка проекта:
-```sh npm install```
-```sh npm run serve```
+```npm install```
+```npm run serve```
